@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Database;
-using Harmony;
+using HarmonyLib;
 
 namespace AsLimc.commons {
     public static class VUtils {
@@ -71,7 +71,7 @@ namespace AsLimc.commons {
                     // if (_TECH_GROUPING[techId] != null) {
                     //     _TECH_GROUPING[techId] = _TECH_GROUPING[techId].Append(itemId);
                     // }
-                    _TECH_GROUPING[techId]?.Add(itemId);
+                    // _TECH_GROUPING[techId]?.Add(itemId);
                 };
             }
             else {

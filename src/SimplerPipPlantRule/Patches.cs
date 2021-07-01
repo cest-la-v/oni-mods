@@ -1,19 +1,10 @@
 ﻿using System.Linq;
-using AsLimc.commons;
-using Harmony;
-using PeterHan.PLib;
-using PeterHan.PLib.Options;
+using HarmonyLib;
 using UnityEngine;
 
 namespace AsLimc.SimplerPipPlantRule {
     internal static class Patches {
-        public static void OnLoad() {
-            PUtil.InitLibrary();
-            POptions.RegisterOptions(typeof(Settings));
-            VLib.Init();
-            Settings.Init();
-        }
-
+        
         [HarmonyPatch(typeof(SeedPlantingMonitor.Def), MethodType.Constructor)]
         internal class SeedPlantingMonitor_Def_Constructor {
             public static void Postfix(ref float ___searchMinInterval, ref float ___searchMaxInterval) {

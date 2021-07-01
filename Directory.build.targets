@@ -3,43 +3,55 @@
     
     <!-- macos系统不支持ilmerge -->
     <ItemGroup Condition="$([MSBuild]::IsOsPlatform('Windows'))">
-        <PackageReference Include="ilmerge" Version="3.0.29" />
-        <PackageReference Include="MSBuild.ILMerge.Task" Version="1.1.3" />
+        <PackageReference Include="ilmerge" Version="3.0.29"/>
+        <PackageReference Include="MSBuild.ILMerge.Task" Version="1.1.3"/>
     </ItemGroup>
-    
+
+    <PropertyGroup>
+        <AssemblySearchPaths>
+            $(GameFolder);$(AssemblySearchPaths)
+        </AssemblySearchPaths>
+    </PropertyGroup>
+
     <ItemGroup>
-        <Reference Include="0Harmony, Version=1.2.0.1, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(ONIManagedDir)\0Harmony.dll</HintPath>
-            <Private>false</Private>
+        <Reference Include="0Harmony">
+            <Private>False</Private>
         </Reference>
-        <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(ONIManagedDir)\Assembly-CSharp.dll</HintPath>
-            <Private>false</Private>
+        <Reference Include="Assembly-CSharp">
+            <Private>False</Private>
         </Reference>
-        <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(ONIManagedDir)\Assembly-CSharp-firstpass.dll</HintPath>
-            <Private>false</Private>
+        <Reference Include="Assembly-CSharp-firstpass">
+            <Private>False</Private>
         </Reference>
-        <Reference Include="FMODUnity, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(ONIManagedDir)\FMODUnity.dll</HintPath>
-            <Private>false</Private>
+        <Reference Include="FMODUnity">
+            <Private>False</Private>
         </Reference>
-        <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-            <HintPath>$(ONIManagedDir)\Newtonsoft.Json.dll</HintPath>
-            <Private>false</Private>
+        <Reference Include="Newtonsoft.Json">
+            <Private>False</Private>
         </Reference>
-        <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(ONIManagedDir)\UnityEngine.dll</HintPath>
-            <Private>false</Private>
+        <Reference Include="UnityEngine">
+            <Private>False</Private>
         </Reference>
-        <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(ONIManagedDir)\UnityEngine.CoreModule.dll</HintPath>
-            <Private>false</Private>
+        <Reference Include="UnityEngine.CoreModule">
+            <Private>False</Private>
         </Reference>
-        <Reference Include="UnityEngine.JSONSerializeModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(ONIManagedDir)\UnityEngine.JSONSerializeModule.dll</HintPath>
-            <Private>false</Private>
+        <Reference Include="UnityEngine.UI">
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="Unity.TextMeshPro">
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.JSONSerializeModule">
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.TextRenderingModule">
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.ImageConversionModule">
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestModule">
+            <Private>False</Private>
         </Reference>
     </ItemGroup>
-    
 </Project>
