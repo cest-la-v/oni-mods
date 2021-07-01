@@ -4,9 +4,11 @@
     <PropertyGroup>
         <ProjectGuid>{D154C7E9-D21D-4901-B93B-8BF38E32DCAB}</ProjectGuid>
         <AssemblyName>commons</AssemblyName>
+        <!-- 已经在Directory.build.props 里定义了
         <ONIDir Condition=" '$(ONIDir)' == '' ">F:\Steam\steamapps\common\OxygenNotIncluded</ONIDir>
         <ONIManagedDir>$(ONIDir)\OxygenNotIncluded_Data\Managed</ONIManagedDir>
         <GlobalPackagesDirectory>C:\Users\Vincent\.nuget\packages</GlobalPackagesDirectory>
+        -->
     </PropertyGroup>
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
@@ -31,6 +33,7 @@
         <Reference Include="System.Core" />
 <!--        <Reference Include="System.Data" />-->
 <!--        <Reference Include="System.Xml" />-->
+        <!-- 已经在Directory.build.props 里定义了
         <Reference Include="0Harmony, Version=1.2.0.1, Culture=neutral, PublicKeyToken=null">
             <HintPath>$(ONIManagedDir)\0Harmony.dll</HintPath>
             <Private>false</Private>
@@ -55,6 +58,7 @@
             <HintPath>$(ONIManagedDir)\Newtonsoft.Json.dll</HintPath>
             <Private>false</Private>
         </Reference>
+        -->
         <!--<Reference Include="FMODUnity, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>$(ONIManagedDir)\FMODUnity.dll</HintPath>
             <Private>false</Private>
