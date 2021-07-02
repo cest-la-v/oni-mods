@@ -8,22 +8,27 @@ common vars https://msdn.microsoft.com/en-us/library/c02as0cs.aspx?f=255&MSPPErr
 -->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <ItemGroup>
-        <Reference Include="System" />
-        <Reference Include="System.Core" />
-        <Reference Include="System.Data" />
-        <Reference Include="System.Xml" />
-      
-        <Reference Condition=" '$(PLib)' == 'true' " Include="PLib, Version=3.13.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>$(SolutionDir)\packages\plib\3.13.0\lib\net40\PLib.dll</HintPath>
+        <Reference Include="System"/>
+        <Reference Include="System.Core"/>
+        <Reference Include="System.Data"/>
+        <Reference Include="System.Xml"/>
+    </ItemGroup>
+    <ItemGroup Condition=" '$(PLib)' == 'true' ">
+        <Reference Include="PLib, Version=4.2.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>$(SolutionDir)\packages\plib\4.2.0\lib\net471\PLib.dll</HintPath>
         </Reference>
-        <Reference Condition=" '$(commons)' == 'true' " Include="commons, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+    </ItemGroup>
+    <ItemGroup Condition=" '$(commons)' == 'true' ">
+        <Reference Include="commons, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>$(SolutionDir)\packages\commons\commons.dll</HintPath>
         </Reference>
-        <Compile Include="**\*.cs" Exclude="bin\**\*;obj\**\*" />
-        <Content Include="static\**\*.*" />
-        <None Include="ILMergeOrder.txt" />
     </ItemGroup>
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+    <ItemGroup>
+        <Compile Include="**\*.cs" Exclude="bin\**\*;obj\**\*"/>
+        <Content Include="static\**\*.*"/>
+        <None Include="ILMergeOrder.txt"/>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- task的build文件夹内定义的targets和props文件都会被自动引入
     <Import Project="$(GlobalPackagesDirectory)\msbuild.ilmerge.task\1.1.3\build\MSBuild.ILMerge.Task.targets"  />
     -->

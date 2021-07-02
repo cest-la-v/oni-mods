@@ -1,7 +1,7 @@
 using AsLimc.commons;
 using HarmonyLib;
 using KMod;
-using PeterHan.PLib;
+using PeterHan.PLib.Core;
 using PeterHan.PLib.Options;
 
 namespace AsLimc.SimplerPipPlantRule
@@ -12,7 +12,8 @@ namespace AsLimc.SimplerPipPlantRule
         {
             base.OnLoad(harmony);
             PUtil.InitLibrary();
-            POptions.RegisterOptions(typeof(Settings));
+            new POptions().RegisterOptions(this,typeof(Settings));
+            // POptions.RegisterOptions(this,typeof(Settings));
             VLib.Init();
             Settings.Init();
         }
