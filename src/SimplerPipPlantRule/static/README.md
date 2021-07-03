@@ -10,6 +10,8 @@ There's a config file so that you can tweak it as you wish.
 
 For default, the pip won't plant seed at the tile, if there's already a plant in the 3*3 square area of it, just like the preview picture.
 
+Works better with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2493100777]Pip Plant Overlay[/url]
+
 [h1]Details[/h1]
 
 [b]Now having config UI implement with PLib, check it out while mod's enabled. It's best to restart the game after you changed the config.[/b]
@@ -23,6 +25,7 @@ For default, the pip won't plant seed at the tile, if there's already a plant in
 [b]Patterns (Not strictly tested)[/b]
 - 0101010 (Default as the preview): plantDetectionRadius = 1, maxPlantsInRadius = 0
 - 0011001100: plantDetectionRadius = 2, maxPlantsInRadius = 1
+- 11111111: plantDetectionRadius = 0, maxPlantsInRadius = 0
 
 [h1]Known Glitch[/h1]
 
@@ -30,10 +33,11 @@ For default, the pip won't plant seed at the tile, if there's already a plant in
 
 [h1]Useful Links[/h1]
 
-- [url=https://github.com/as-limc/oni-mods]My GitHub[/url]
+- [url=https://github.com/v-limc/oni-mods]My GitHub[/url]
+- [url=https://github.com/undancer/oni-mods]undancer / oni-mods[/url]
 - [url=https://forums.kleientertainment.com/forums/forum/204-oxygen-not-included-mods-and-tools/][Oxygen Not Included] - Mods and Tools - Klei Entertainment Forums[/url]
 - [url=https://oni-db.com/]Oxygen Not Included Database by Fabrizio Filizola[/url]
-- [url=https://github.com/peterhaneve/ONIMods/tree/master/PLib]peterhaneve/ONIMods/PLib[/url]
+- [url=https://github.com/peterhaneve/ONIMods/tree/master/PLib]peterhaneve / ONIMods / PLib[/url]
 
 ## CN 简化树鼠种植规则
 
@@ -44,6 +48,8 @@ For default, the pip won't plant seed at the tile, if there's already a plant in
 提供了配置文件可供按自己喜好调整参数。
 
 默认情况下，如果在某个格子的3*3矩形范围内已经有一棵植物了，树鼠就不会在该格子种植，即如预览图所示。
+
+配合[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2493100777]Pip Plant Overlay[/url]使用更佳
 
 [h1]具体参数[/h1]
 
@@ -58,6 +64,7 @@ For default, the pip won't plant seed at the tile, if there's already a plant in
 [b]模式 (没有严格测试)[/b]
 - 0101010 (默认如预览图): plantDetectionRadius = 1, maxPlantsInRadius = 0
 - 0011001100: plantDetectionRadius = 2, maxPlantsInRadius = 1
+- 11111111: plantDetectionRadius = 0, maxPlantsInRadius = 0
 
 [h1]已知缺陷[/h1]
 
@@ -65,7 +72,8 @@ For default, the pip won't plant seed at the tile, if there's already a plant in
 
 [h1]相关链接[/h1]
 
-- [url=https://github.com/as-limc/oni-mods]My GitHub[/url]
+- [url=https://github.com/v-limc/oni-mods]My GitHub[/url]
+- [url=https://github.com/undancer/oni-mods]undancer / oni-mods[/url]
 - [url=https://forums.kleientertainment.com/forums/forum/204-oxygen-not-included-mods-and-tools/][Oxygen Not Included] - Mods and Tools - Klei Entertainment Forums[/url]
 - [url=https://oni-db.com/]Oxygen Not Included Database by Fabrizio Filizola[/url]
-- [url=https://github.com/peterhaneve/ONIMods/tree/master/PLib]peterhaneve/ONIMods/PLib[/url]
+- [url=https://github.com/peterhaneve/ONIMods/tree/master/PLib]peterhaneve / ONIMods / PLib[/url]
