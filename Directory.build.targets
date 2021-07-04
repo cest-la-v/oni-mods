@@ -1,57 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    
-    <!-- macos系统不支持ilmerge -->
-    <ItemGroup Condition="$([MSBuild]::IsOsPlatform('Windows'))">
-        <PackageReference Include="ilmerge" Version="3.0.29"/>
-        <PackageReference Include="MSBuild.ILMerge.Task" Version="1.1.3"/>
-    </ItemGroup>
-
+    <ItemDefinitionGroup>
+        <Reference>
+            <Private>false</Private>
+        </Reference>
+        <ProjectReference Private="true"/>
+    </ItemDefinitionGroup>
     <PropertyGroup>
         <AssemblySearchPaths>
-            $(GameFolder);$(AssemblySearchPaths)
+            $(GameLibPath);$(AssemblySearchPaths)
         </AssemblySearchPaths>
     </PropertyGroup>
-
     <ItemGroup>
-        <Reference Include="0Harmony">
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="Assembly-CSharp">
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="Assembly-CSharp-firstpass">
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="FMODUnity">
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="Newtonsoft.Json">
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="UnityEngine">
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="UnityEngine.CoreModule">
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UI">
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="Unity.TextMeshPro">
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="UnityEngine.JSONSerializeModule">
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="UnityEngine.TextRenderingModule">
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="UnityEngine.ImageConversionModule">
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="UnityEngine.UnityWebRequestModule">
-            <Private>False</Private>
-        </Reference>
+        <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2"/>
+        <Reference Include="System"/>
+        <Reference Include="System.Core"/>
+        <Reference Include="System.Data"/>
+        <Reference Include="System.Xml"/>
+        <Reference Include="0Harmony"/>
+        <Reference Include="Assembly-CSharp"/>
+        <Reference Include="Assembly-CSharp-firstpass"/>
+        <Reference Include="FMODUnity"/>
+        <Reference Include="Newtonsoft.Json"/>
+        <Reference Include="UnityEngine"/>
+        <Reference Include="UnityEngine.CoreModule"/>
+        <Reference Include="UnityEngine.UI"/>
+        <Reference Include="Unity.TextMeshPro"/>
+        <Reference Include="UnityEngine.JSONSerializeModule"/>
+        <Reference Include="UnityEngine.TextRenderingModule"/>
+        <Reference Include="UnityEngine.ImageConversionModule"/>
+        <Reference Include="UnityEngine.UnityWebRequestModule"/>
+        <PackageReference Include="PLib" Version="4.2.0" Condition="'$(UsePLib)' == 'true'"/>
     </ItemGroup>
+    <ItemGroup>
+        <Compile Include="..\Commons\**\*.cs" Condition="'$(UseCommons)' == 'true'"/>
+        <Content Include="static\**\*.*"/>
+    </ItemGroup>
+
+    <Target Name="ILRepack" AfterTargets="Build" Condition="'$(Configuration)' != 'Release'">
+        <ItemGroup>
+            <InputAssemblies Include="$(TargetPath)\Plib.dll"/>
+        </ItemGroup>
+        <ILRepack
+                Parallel="true"
+                Internalize="true"
+                TargetPlatformVersion="v4"
+                WilcardInputAssemblies="true"
+                OutputType="SameAsPrimaryAssembly"
+                InputAssemblies="@(InputAssemblies)"
+                OutputFile="$(OutputPath)\$(AssemblyName).dll"/>
+        <!--
+                XmlDocumentation="true"
+                MainAssembly="$(TargetPath)"
+                OutputAssembly="$(TargetPath)"
+                LibraryPath="@(GameFolder)"
+        -->
+    </Target>
+
+    <!--    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>-->
+
+    <!--<Target Name="AfterClean" AfterTargets="Clean">
+        <Message Text="======================== AfterClean ========================"/>
+        <RemoveDir Directories="$(TargetDir)"/> &lt;!&ndash; bin &ndash;&gt;
+        <RemoveDir Directories="$(BaseIntermediateOutputPath)"/> &lt;!&ndash; obj &ndash;&gt;
+        <RemoveDir Directories="$(GameDebugPath)\[Dev]$(AssemblyName)"/>
+    </Target>
+    <Target Name="AfterBuild" AfterTargets="Build">
+        <Message Text="======================== AfterBuild ========================"/>
+        <ItemGroup>
+            <PdbFiles Include="$(TargetDir)\**\*.pdb"/>
+            <StaticFiles Include="$(ProjectDir)\static\**\*.*"/>
+        </ItemGroup>
+        <Delete Files="@(PdbFiles)"/>
+        <Copy SourceFiles="@(StaticFiles)" DestinationFiles="@(StaticFiles->'$(TargetDir)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true"/>
+    </Target>
+    <Target Name="AfterBuild - Debug" AfterTargets="Build" Condition=" '$(Configuration)' == 'Debug' ">
+        <Message Text="======================== AfterBuild - Debug ========================"/>
+        <ItemGroup>
+            <TargetFiles Include="$(TargetDir)\**\*.*"/>
+            &lt;!&ndash; Append to FileWrites so the file will be removed on clean &ndash;&gt;
+            &lt;!&ndash;<FileWrites Include="@(TargetFiles);@(DebugFiles)"/>&ndash;&gt;
+        </ItemGroup>
+        <Copy SourceFiles="@(TargetFiles)" DestinationFiles="@(TargetFiles->'$(GameDebugPath)\[Dev]$(AssemblyName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true"/>
+    </Target>-->
+
+
 </Project>

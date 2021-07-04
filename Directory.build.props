@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+***********************************************************************************************
+API: https://docs.microsoft.com/zh-cn/visualstudio/msbuild
+macros: https://docs.microsoft.com/zh-cn/visualstudio/ide/reference/pre-build-event-post-build-event-command-line-dialog-box?view=vs-2019#macros
+list-of-common-properties-and-parameters https://docs.microsoft.com/zh-cn/visualstudio/msbuild/common-msbuild-project-properties?view=vs-2019#list-of-common-properties-and-parameters
+common vars https://msdn.microsoft.com/en-us/library/c02as0cs.aspx?f=255&MSPPError=-2147217396
+***********************************************************************************************
+-->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    
-    <Import Project="Directory.Build.macos.props" Condition="$([MSBuild]::IsOsPlatform('OSX'))" />
-    
+    <Import Project="Directory.Build.macos.props" Condition="$([MSBuild]::IsOSPlatform('OSX'))" />
+    <Import Project="Directory.Build.windows.props" Condition="$([MSBuild]::IsOSPlatform('Windows'))" />
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <AllowedReferenceRelatedFileExtensions>none</AllowedReferenceRelatedFileExtensions>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net48</TargetFramework>
+<!--        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>-->
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>AsLimc.$(AssemblyName)</RootNamespace>
+        <FileAlignment>512</FileAlignment>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+<!--        <OutputPath>bin\Debug\</OutputPath>-->
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>false</DebugSymbols>
+        <DebugType>none</DebugType>
+        <Optimize>true</Optimize>
+<!--        <OutputPath>bin\Release\</OutputPath>-->
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup>
+        <Authors>limc</Authors>
+        <Company>asido</Company>
+        <Copyright>Copyright © limc 2021</Copyright>
+    </PropertyGroup>
 </Project>

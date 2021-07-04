@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project          xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ONIDir Condition=" '$(ONIDir)' == '' ">F:\Steam\steamapps\common\OxygenNotIncluded</ONIDir>
-        <ONIManagedDir>$(ONIDir)\OxygenNotIncluded_Data\Managed</ONIManagedDir>
-        <ONIDocDir>D:\Documents\Klei\OxygenNotIncluded</ONIDocDir>
         <GlobalPackagesDirectory>C:\Users\Vincent\.nuget\packages</GlobalPackagesDirectory>
+        <GameLibPath>F:\Steam\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed</GameLibPath>
+        <GameDataPath>D:\Documents\Klei\OxygenNotIncluded</GameDataPath>
+        <GameDebugPath>$(GameDataPath)\mods\Local</GameDebugPath>
     </PropertyGroup>
-    
 </Project>

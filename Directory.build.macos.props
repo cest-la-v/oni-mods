@@ -1,24 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    
-    
     <PropertyGroup>
-        <SteamFolder>$(HOME)/Library/Application Support/Steam</SteamFolder>
-        <GameFolder>$(SteamFolder)/steamapps/common/OxygenNotIncluded/OxygenNotIncluded.app/Contents/Resources/Data/Managed</GameFolder>
-        <GameUserDataFolder>$(HOME)\Library\Application Support\unity.Klei.Oxygen Not Included</GameUserDataFolder>
-        <ModFolder>$(GameUserDataFolder)\mods\Dev</ModFolder>
-    </PropertyGroup>
-    
-    <PropertyGroup>
-        <ONIDir Condition=" '$(ONIDir)' == '' ">F:\Steam\steamapps\common\OxygenNotIncluded</ONIDir>
-        <ONIManagedDir>$(ONIDir)\OxygenNotIncluded_Data\Managed</ONIManagedDir>
-        <ONIDocDir>D:\Documents\Klei\OxygenNotIncluded</ONIDocDir>
         <GlobalPackagesDirectory>$(HOME)\.nuget\packages</GlobalPackagesDirectory>
+        <GameLibPath>$(SteamFolder)/steamapps/common/OxygenNotIncluded/OxygenNotIncluded.app/Contents/Resources/Data/Managed</GameLibPath>
+        <GameDataPath>$(HOME)\Library\Application Support\unity.Klei.Oxygen Not Included</GameDataPath>
+        <GameDebugPath>$(GameDataPath)\mods\Dev</GameDebugPath>
+
+<!--        <SteamFolder>$(HOME)/Library/Application Support/Steam</SteamFolder>-->
     </PropertyGroup>
-    
-    <PropertyGroup>
-        <ONIManagedDir>$(GameFolder)</ONIManagedDir>
-        <ONIDocDir>$(GameUserDataFolder)</ONIDocDir>
-    </PropertyGroup>
-    
 </Project>
