@@ -4,7 +4,7 @@
   <PropertyGroup>
     <ProjectGuid>{ABEDA729-09BF-47A2-89F9-0FB1E73FEAC4}</ProjectGuid>
     <AssemblyName>MicrobeMusherWithLight</AssemblyName>
+    <AssemblyTitle>Simpler Pip Plant Rule</AssemblyTitle>
+    <Version>1.1.0.1</Version>
   </PropertyGroup>
-  <Import Project="$(SolutionDir)\common.props" />
-  <Import Project="$(SolutionDir)\common.targets" />
 </Project>

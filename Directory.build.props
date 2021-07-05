@@ -8,16 +8,13 @@ common vars https://msdn.microsoft.com/en-us/library/c02as0cs.aspx?f=255&MSPPErr
 ***********************************************************************************************
 -->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="Directory.Build.macos.props" Condition="$([MSBuild]::IsOSPlatform('OSX'))" />
-    <Import Project="Directory.Build.windows.props" Condition="$([MSBuild]::IsOSPlatform('Windows'))" />
+<!--    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>-->
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
         <AllowedReferenceRelatedFileExtensions>none</AllowedReferenceRelatedFileExtensions>
         <OutputType>Library</OutputType>
         <TargetFramework>net48</TargetFramework>
-<!--        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>-->
-        <AppDesignerFolder>Properties</AppDesignerFolder>
         <RootNamespace>AsLimc.$(AssemblyName)</RootNamespace>
         <FileAlignment>512</FileAlignment>
         <LangVersion>latest</LangVersion>
@@ -27,7 +24,7 @@ common vars https://msdn.microsoft.com/en-us/library/c02as0cs.aspx?f=255&MSPPErr
         <DebugSymbols>true</DebugSymbols>
         <DebugType>full</DebugType>
         <Optimize>false</Optimize>
-<!--        <OutputPath>bin\Debug\</OutputPath>-->
+        <OutputPath>bin\Debug\</OutputPath>
         <DefineConstants>DEBUG;TRACE</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
@@ -37,7 +34,7 @@ common vars https://msdn.microsoft.com/en-us/library/c02as0cs.aspx?f=255&MSPPErr
         <DebugSymbols>false</DebugSymbols>
         <DebugType>none</DebugType>
         <Optimize>true</Optimize>
-<!--        <OutputPath>bin\Release\</OutputPath>-->
+        <OutputPath>bin\Release\</OutputPath>
         <DefineConstants>TRACE</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
@@ -47,4 +44,6 @@ common vars https://msdn.microsoft.com/en-us/library/c02as0cs.aspx?f=255&MSPPErr
         <Company>asido</Company>
         <Copyright>Copyright © limc 2021</Copyright>
     </PropertyGroup>
+    <Import Project="Directory.Build.macos.props" Condition="$([MSBuild]::IsOSPlatform('OSX'))"/>
+    <Import Project="Directory.Build.windows.props" Condition="$([MSBuild]::IsOSPlatform('Windows'))"/>
 </Project>

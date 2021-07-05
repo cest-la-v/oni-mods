@@ -2,8 +2,8 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <GlobalPackagesDirectory>C:\Users\Vincent\.nuget\packages</GlobalPackagesDirectory>
-        <GameLibPath>F:\Steam\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed</GameLibPath>
-        <GameDataPath>D:\Documents\Klei\OxygenNotIncluded</GameDataPath>
-        <GameDebugPath>$(GameDataPath)\mods\Local</GameDebugPath>
+        <GameLibDir>F:\Steam\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed</GameLibDir>
+        <GameDataDir>D:\Documents\Klei\OxygenNotIncluded</GameDataDir>
+        <GameDebugDir>$(GameDataDir)\mods\Local</GameDebugDir>
     </PropertyGroup>
 </Project>

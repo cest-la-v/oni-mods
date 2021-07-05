@@ -4,8 +4,10 @@
   <PropertyGroup>
     <ProjectGuid>{9CCDE08D-0D2B-416C-940A-1330DC875973}</ProjectGuid>
     <AssemblyName>SmootherLight</AssemblyName>
-    <PLib>true</PLib>
+    <AssemblyTitle>Smoother Light</AssemblyTitle>
+    <Version>1.2.1.1</Version>
   </PropertyGroup>
-  <Import Project="$(SolutionDir)\common.props" />
-  <Import Project="$(SolutionDir)\common.targets" />
+  <PropertyGroup>
+    <UsePLib>true</UsePLib>
+  </PropertyGroup>
 </Project>

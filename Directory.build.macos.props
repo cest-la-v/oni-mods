@@ -2,9 +2,9 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <GlobalPackagesDirectory>$(HOME)\.nuget\packages</GlobalPackagesDirectory>
-        <GameLibPath>$(SteamFolder)/steamapps/common/OxygenNotIncluded/OxygenNotIncluded.app/Contents/Resources/Data/Managed</GameLibPath>
-        <GameDataPath>$(HOME)\Library\Application Support\unity.Klei.Oxygen Not Included</GameDataPath>
-        <GameDebugPath>$(GameDataPath)\mods\Dev</GameDebugPath>
+        <GameLibDir>$(SteamFolder)/steamapps/common/OxygenNotIncluded/OxygenNotIncluded.app/Contents/Resources/Data/Managed</GameLibDir>
+        <GameDataDir>$(HOME)\Library\Application Support\unity.Klei.Oxygen Not Included</GameDataDir>
+        <GameDebugDir>$(GameDataDir)\mods\Dev</GameDebugDir>
 
 <!--        <SteamFolder>$(HOME)/Library/Application Support/Steam</SteamFolder>-->
     </PropertyGroup>

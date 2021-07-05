@@ -4,7 +4,7 @@
     <PropertyGroup>
         <ProjectGuid>{51D763A9-C8FB-434E-A7AA-0FB69E911A91}</ProjectGuid>
         <AssemblyName>RotatablePowerTransformer</AssemblyName>
+        <AssemblyTitle>Rotatable Power Transformer</AssemblyTitle>
+        <Version>1.1.0.1</Version>
     </PropertyGroup>
-    <Import Project="$(SolutionDir)\common.props" />
-    <Import Project="$(SolutionDir)\common.targets" />
 </Project>

@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <AssemblySearchPaths>$(GameLibDir);$(AssemblySearchPaths)</AssemblySearchPaths>
+    </PropertyGroup>
     <ItemDefinitionGroup>
         <Reference>
             <Private>false</Private>
         </Reference>
         <ProjectReference Private="true"/>
     </ItemDefinitionGroup>
-    <PropertyGroup>
-        <AssemblySearchPaths>
-            $(GameLibPath);$(AssemblySearchPaths)
-        </AssemblySearchPaths>
-    </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2"/>
         <Reference Include="System"/>
         <Reference Include="System.Core"/>
         <Reference Include="System.Data"/>
@@ -30,40 +27,37 @@
         <Reference Include="UnityEngine.TextRenderingModule"/>
         <Reference Include="UnityEngine.ImageConversionModule"/>
         <Reference Include="UnityEngine.UnityWebRequestModule"/>
+<!--        <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" PrivateAssets="all"/>-->
         <PackageReference Include="PLib" Version="4.2.0" Condition="'$(UsePLib)' == 'true'"/>
     </ItemGroup>
     <ItemGroup>
         <Compile Include="..\Commons\**\*.cs" Condition="'$(UseCommons)' == 'true'"/>
         <Content Include="static\**\*.*"/>
     </ItemGroup>
+<!--    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />-->
 
+<!--
     <Target Name="ILRepack" AfterTargets="Build" Condition="'$(Configuration)' != 'Release'">
-        <ItemGroup>
-            <InputAssemblies Include="$(TargetPath)\Plib.dll"/>
+        <ItemGroup Condition="'$(UsePLib)' == 'true'">
+            <InputAssemblies Include="$(OutputPath)\Plib.dll"/>
         </ItemGroup>
         <ILRepack
                 Parallel="true"
                 Internalize="true"
-                TargetPlatformVersion="v4"
-                WilcardInputAssemblies="true"
-                OutputType="SameAsPrimaryAssembly"
                 InputAssemblies="@(InputAssemblies)"
                 OutputFile="$(OutputPath)\$(AssemblyName).dll"/>
-        <!--
-                XmlDocumentation="true"
-                MainAssembly="$(TargetPath)"
-                OutputAssembly="$(TargetPath)"
-                LibraryPath="@(GameFolder)"
-        -->
+        &lt;!&ndash;
+                WilcardInputAssemblies="true"
+                OutputType="SameAsPrimaryAssembly"
+                TargetPlatformVersion="v4"
+        &ndash;&gt;
     </Target>
+-->
 
-    <!--    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>-->
-
-    <!--<Target Name="AfterClean" AfterTargets="Clean">
+    <Target Name="AfterClean" AfterTargets="Clean">
         <Message Text="======================== AfterClean ========================"/>
-        <RemoveDir Directories="$(TargetDir)"/> &lt;!&ndash; bin &ndash;&gt;
-        <RemoveDir Directories="$(BaseIntermediateOutputPath)"/> &lt;!&ndash; obj &ndash;&gt;
-        <RemoveDir Directories="$(GameDebugPath)\[Dev]$(AssemblyName)"/>
+        <RemoveDir Directories="$(TargetDir)"/> <!-- bin -->
+        <RemoveDir Directories="$(GameDebugDir)\[Dev]$(AssemblyName)"/>
     </Target>
     <Target Name="AfterBuild" AfterTargets="Build">
         <Message Text="======================== AfterBuild ========================"/>
@@ -78,11 +72,11 @@
         <Message Text="======================== AfterBuild - Debug ========================"/>
         <ItemGroup>
             <TargetFiles Include="$(TargetDir)\**\*.*"/>
-            &lt;!&ndash; Append to FileWrites so the file will be removed on clean &ndash;&gt;
-            &lt;!&ndash;<FileWrites Include="@(TargetFiles);@(DebugFiles)"/>&ndash;&gt;
+            <!-- Append to FileWrites so the file will be removed on clean -->
+            <!--<FileWrites Include="@(TargetFiles);@(DebugFiles)"/>-->
         </ItemGroup>
-        <Copy SourceFiles="@(TargetFiles)" DestinationFiles="@(TargetFiles->'$(GameDebugPath)\[Dev]$(AssemblyName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true"/>
-    </Target>-->
+        <Copy SourceFiles="@(TargetFiles)" DestinationFiles="@(TargetFiles->'$(GameDebugDir)\[Dev]$(AssemblyName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true"/>
+    </Target>
 
 
 </Project>
