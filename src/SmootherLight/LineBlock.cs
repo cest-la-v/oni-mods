@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MightyVincent
+namespace AsLimc.SmootherLight
 {
     public struct LineBlock
     {

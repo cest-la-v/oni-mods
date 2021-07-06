@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MightyVincent
+namespace AsLimc.SmootherLight
 {
     internal static class LightGridTool
     {

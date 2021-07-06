@@ -1,23 +1,11 @@
 ﻿using System.Collections.Generic;
-using Harmony;
-using PeterHan.PLib;
-using PeterHan.PLib.Options;
+using HarmonyLib;
 using UnityEngine;
 
-namespace MightyVincent
+namespace AsLimc.SmootherLight
 {
     internal static class Patches
     {
-        public static Settings settings;
-
-        public static void OnLoad()
-        {
-            PUtil.InitLibrary();
-            POptions.RegisterOptions(typeof(Settings));
-            Debug.Log("Loading settings");
-            settings = POptions.ReadSettings<Settings>() ?? new Settings();
-        }
-
         [HarmonyPatch(typeof(DiscreteShadowCaster), "GetVisibleCells")]
         internal class DiscreteShadowCaster_GetVisibleCells
         {
@@ -33,7 +21,7 @@ namespace MightyVincent
         {
             public static void Postfix(BuildingDef __result)
             {
-                __result.BlockTileIsTransparent = Patches.settings.LightThroughMeshTiles;
+                __result.BlockTileIsTransparent = Settings.Get().LightThroughMeshTiles;
             }
         }
 
@@ -42,7 +30,7 @@ namespace MightyVincent
         {
             public static void Postfix(GameObject go, Tag prefab_tag)
             {
-                go.AddOrGet<SimCellOccupier>().setTransparent = Patches.settings.LightThroughMeshTiles;
+                go.AddOrGet<SimCellOccupier>().setTransparent = Settings.Get().LightThroughMeshTiles;
             }
         }
 
@@ -51,7 +39,7 @@ namespace MightyVincent
         {
             public static void Postfix(BuildingDef __result)
             {
-                __result.BlockTileIsTransparent = Patches.settings.LightThroughMeshTiles;
+                __result.BlockTileIsTransparent = Settings.Get().LightThroughMeshTiles;
             }
         }
 
@@ -60,7 +48,7 @@ namespace MightyVincent
         {
             public static void Postfix(GameObject go, Tag prefab_tag)
             {
-                go.AddOrGet<SimCellOccupier>().setTransparent = Patches.settings.LightThroughMeshTiles;
+                go.AddOrGet<SimCellOccupier>().setTransparent = Settings.Get().LightThroughMeshTiles;
             }
         }
     }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace MightyVincent
+namespace AsLimc.SmootherLight
 {
     public interface ICellEnumerator : IEnumerable<Vector2I>
     {
