@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TUNING;
 
-namespace AsLimc.commons {
+namespace AsLimc.Commons {
     public abstract class VBuildingConfig : IBuildingConfig {
         public LocString name { get; }
         public LocString desc { get; }

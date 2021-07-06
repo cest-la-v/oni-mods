@@ -5,7 +5,7 @@ using System.Reflection;
 using Database;
 using HarmonyLib;
 
-namespace AsLimc.commons {
+namespace AsLimc.Commons {
     public static class VUtils {
         private static FieldInfo loggingDisabledField => AccessTools.Field(typeof(Debug), "s_loggingDisabled");
 
@@ -51,15 +51,16 @@ namespace AsLimc.commons {
             }
         }
 
-        public static string GetActiveDlcId() {
+        public static bool IsVanilla() {
             // var activeDlcId = "vanilla_id";
             // var activeDlcId = DlcManager.GetActiveDlcId().ToLower();
             // if (activeDlcId == "")
             // {
             //     activeDlcId = "vanilla_id";
             // }
-            var method = AccessTools.Method(AccessTools.TypeByName("DlcManager"), "GetActiveDlcId");
-            return method?.Invoke(null, null) is string activeDlcId && !activeDlcId.IsNullOrWhiteSpace() ? activeDlcId : null;
+            // string.Equals(VUtils.IsVanilla(), "vanilla_id", StringComparison.OrdinalIgnoreCase)
+            var method = AccessTools.Method(AccessTools.TypeByName("DlcManager"), "IsPureVanilla");
+            return method?.Invoke(null, null) is bool;
         }
 
         public static void InitTechAdder(bool isVanilla) {

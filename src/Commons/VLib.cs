@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace AsLimc.commons {
+namespace AsLimc.Commons {
     public static class VLib {
         private static bool _IS_INIT;
         private static bool _IS_VANILLA;
@@ -27,7 +27,7 @@ namespace AsLimc.commons {
         private static void InitInternal() {
             VUtils.Log("Initializing {0}", nameof(VLib));
 
-            _IS_VANILLA = string.Equals(VUtils.GetActiveDlcId(), "vanilla_id", StringComparison.OrdinalIgnoreCase);
+            _IS_VANILLA = VUtils.IsVanilla();
 
             VUtils.InitTechAdder(_IS_VANILLA);
         }
