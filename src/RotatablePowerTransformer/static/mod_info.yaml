@@ -1,2 +1,3 @@
-supportedContent: ALL
-lastWorkingBuild: 447598
+supportedContent: vanilla_id,expansion1_id
+minimumSupportedBuild: 469473
+APIVersion: 2

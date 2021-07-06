@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <ProjectGuid>{51D763A9-C8FB-434E-A7AA-0FB69E911A91}</ProjectGuid>
         <AssemblyName>RotatablePowerTransformer</AssemblyName>
         <AssemblyTitle>Rotatable Power Transformer</AssemblyTitle>
         <Version>1.1.0.1</Version>
     </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="PLib" Version="4.2.0" />
+    </ItemGroup>
 </Project>
