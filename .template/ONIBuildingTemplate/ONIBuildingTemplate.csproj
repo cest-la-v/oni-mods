@@ -1,10 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
     <PropertyGroup>
         <ProjectGuid>{FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF}</ProjectGuid>
         <AssemblyName>ONIBuildingTemplate</AssemblyName>
     </PropertyGroup>
-    <Import Project="$(SolutionDir)\common.props" />
-    <Import Project="$(SolutionDir)\common.targets" />
 </Project>
