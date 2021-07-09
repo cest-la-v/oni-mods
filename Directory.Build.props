@@ -8,16 +8,21 @@ common vars https://msdn.microsoft.com/en-us/library/c02as0cs.aspx?f=255&MSPPErr
 ***********************************************************************************************
 -->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-<!--    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>-->
+    <!--    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>-->
     <PropertyGroup>
-        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <AllowedReferenceRelatedFileExtensions>none</AllowedReferenceRelatedFileExtensions>
-        <OutputType>Library</OutputType>
-        <TargetFramework>net48</TargetFramework>
+        <Authors>limc</Authors>
+        <Company>asido</Company>
+        <Copyright>Copyright © limc 2021</Copyright>
+    </PropertyGroup>
+    <PropertyGroup>
         <RootNamespace>AsLimc.$(AssemblyName)</RootNamespace>
+        <Configurations>Debug;Release</Configurations>
+        <Platforms>Vanilla;DLC</Platforms>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net471</TargetFramework>
         <FileAlignment>512</FileAlignment>
         <LangVersion>latest</LangVersion>
+        <AllowedReferenceRelatedFileExtensions>.none</AllowedReferenceRelatedFileExtensions>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -28,6 +33,8 @@ common vars https://msdn.microsoft.com/en-us/library/c02as0cs.aspx?f=255&MSPPErr
         <DefineConstants>DEBUG;TRACE</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
+        <DeployLocal>true</DeployLocal>
+        <DeployRelease>false</DeployRelease>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,12 +45,7 @@ common vars https://msdn.microsoft.com/en-us/library/c02as0cs.aspx?f=255&MSPPErr
         <DefineConstants>TRACE</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
+        <DeployLocal>false</DeployLocal>
+        <DeployRelease>true</DeployRelease>
     </PropertyGroup>
-    <PropertyGroup>
-        <Authors>limc</Authors>
-        <Company>asido</Company>
-        <Copyright>Copyright © limc 2021</Copyright>
-    </PropertyGroup>
-    <Import Project="Directory.Build.macos.props" Condition="$([MSBuild]::IsOSPlatform('OSX'))"/>
-    <Import Project="Directory.Build.windows.props" Condition="$([MSBuild]::IsOSPlatform('Windows'))"/>
 </Project>

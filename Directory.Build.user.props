@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup Condition=" '$(GameContent)' == '' And '$(Platform)' == 'Vanilla' ">
+        <GameContent>Vanilla</GameContent>
+        <SupportedContent>VANILLA_ID</SupportedContent>
+        <LastWorkingBuild>447596</LastWorkingBuild>
+        <APIVersion>1</APIVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(GameContent)' == '' And '$(Platform)' == 'DLC' ">
+        <GameContent>DLC</GameContent>
+        <SupportedContent>EXPANSION1_ID</SupportedContent>
+        <LastWorkingBuild>469473</LastWorkingBuild>
+        <APIVersion>2</APIVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+        <GlobalPackagesDirectory>C:\Users\Vincent\.nuget\packages</GlobalPackagesDirectory>
+        <GameLibDir>F:\Steam\steamapps\common\OxygenNotIncluded_$(GameContent)\OxygenNotIncluded_Data\Managed</GameLibDir>
+        <GameDataDir>D:\Documents\Klei\OxygenNotIncluded</GameDataDir>
+        <GameDebugDir>$(GameDataDir)\mods\Local</GameDebugDir>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('OSX'))">
+        <GlobalPackagesDirectory>$(HOME)\.nuget\packages</GlobalPackagesDirectory>
+        <GameLibDir>$(SteamFolder)/steamapps/common/OxygenNotIncluded/OxygenNotIncluded.app/Contents/Resources/Data/Managed</GameLibDir>
+        <GameDataDir>$(HOME)\Library\Application Support\unity.Klei.Oxygen Not Included</GameDataDir>
+        <GameDebugDir>$(GameDataDir)\mods\Dev</GameDebugDir>
+        <!--        <SteamFolder>$(HOME)/Library/Application Support/Steam</SteamFolder>-->
+    </PropertyGroup>
+</Project>
