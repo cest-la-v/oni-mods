@@ -131,8 +131,8 @@ namespace AsLimc.Commons {
                 if (!typeof(VBuildingConfig).IsAssignableFrom(type) || type.IsAbstract || type.IsInterface)
                     continue;
                 var instance = Activator.CreateInstance(type);
-                if (instance is VBuildingConfig vBuildingConfig) {
-                    buildingConfigs.Add(vBuildingConfig);
+                if (instance is VBuildingConfig buildingConfig) {
+                    buildingConfigs.Add(buildingConfig);
                 }
             }
 
