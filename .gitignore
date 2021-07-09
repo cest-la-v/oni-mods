@@ -617,4 +617,3 @@ Managed/UnityEngine.*.dll
 *.zip
 **/obj
 **/bin
-/packages/commons/commons.dll
