@@ -1,41 +1,34 @@
-namespace MightyVincent
-{
-    public class WorkingLightController : GameStateMachine<WorkingLightController, WorkingLightController.Instance>
-    {
+namespace MightyVincent {
+    public class WorkingLightController : GameStateMachine<WorkingLightController, WorkingLightController.Instance> {
         public State Off;
         public State On;
 
-        public override void InitializeStates(out BaseState state)
-        {
+        public override void InitializeStates(out BaseState state) {
             state = Off;
-            Off.PlayAnim("off")
-                .EventTransition(GameHashes.ActiveChanged, On, smi => smi.GetComponent<Operational>().IsActive)
-                .Enter(smi => smi.SwitchLight(false))
+            Off
+                .PlayAnim("off")
+                .Enter(smi => smi._light.enabled = false)
+                .EventTransition(GameHashes.ActiveChanged, On, smi => smi.operational.IsActive)
                 ;
-            On.PlayAnim("on")
-                .EventTransition(GameHashes.ActiveChanged, Off, smi => !smi.GetComponent<Operational>().IsActive)
+            On
+                .PlayAnim("on")
+                .Enter(smi => smi._light.enabled = true)
                 .ToggleStatusItem(Db.Get().BuildingStatusItems.EmittingLight)
-                .Enter(smi => smi.SwitchLight(true))
+                .EventTransition(GameHashes.ActiveChanged, Off, smi => !smi.operational.IsActive)
                 ;
         }
 
-        public class Def : BaseDef
-        {
+        public class Def : BaseDef {
         }
 
-        public new class Instance : GameInstance
-        {
-            private readonly Light2D _light;
+        public new class Instance : GameInstance {
+            public readonly Light2D _light;
+            public readonly Operational operational;
 
             public Instance(IStateMachineTarget master, Def def)
-                : base(master, def)
-            {
+                : base(master, def) {
+                operational = master.GetComponent<Operational>();
                 _light = master.GetComponent<Light2D>();
-            }
-
-            public void SwitchLight(bool on)
-            {
-                _light.enabled = on;
             }
         }
     }
