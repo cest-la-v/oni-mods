@@ -1,18 +1,18 @@
-using KMod;
 using Newtonsoft.Json;
+using PeterHan.PLib;
 using PeterHan.PLib.Options;
 
 namespace AsLimc.SmootherLight
 {
     [JsonObject(MemberSerialization.OptIn)]
+    [RestartRequired]
     public class Settings
     {
         private static Settings _INSTANCE;
         public static Settings Get() => _INSTANCE;
 
-        public static void Init(UserMod2 modLoader) {
-            new POptions().RegisterOptions(modLoader, typeof(Settings));
-            _INSTANCE ??= POptions.ReadSettings<Settings>() ?? new Settings();
+        public static void Init(Settings settings) {
+            _INSTANCE ??= settings ?? new Settings();
         }
 
         [Option("Light through Mesh Tiles", "Can light go through Mesh Tiles. (Restart Needed)", null)]
