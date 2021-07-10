@@ -8,8 +8,8 @@ using UnityEngine;
 namespace AsLimc.LaserTurret {
     [SerializationConfig(MemberSerialization.OptIn)]
     public class LaserTurret : StateMachineComponent<LaserTurret.Instance> {
-        [SerializeField] public Color noFilterTint = TreeFilterable.NO_FILTER_TINT;
-        [SerializeField] public Color filterTint = TreeFilterable.FILTER_TINT;
+        [SerializeField] public Color noFilterTint = (Color32) new Color(0.5019608f, 0.5019608f, 0.5019608f, 1f);
+        [SerializeField] public Color filterTint = (Color32) Color.white;
 
         [MyCmpReq] private Operational operational;
 //        [MyCmpGet] private KSelectable _selectable;

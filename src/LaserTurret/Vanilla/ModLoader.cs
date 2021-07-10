@@ -1,14 +1,13 @@
-﻿using AsLimc.commons;
+using AsLimc.Commons;
 using PeterHan.PLib;
 using PeterHan.PLib.Datafiles;
 
-namespace AsLimc.LaserTurret {
-    internal class Patches {
+namespace AsLimc.HyperReservoir {
+    internal class ModLoader {
         public static void OnLoad() {
             PUtil.InitLibrary();
             PLocalization.Register();
-            VLib.Init();
-            //ModUtil.RegisterForTranslation(typeof(LocStrings));
+            VLib.Register();
         }
     }
 }
