@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <PropertyGroup Condition=" '$(GameContent)' == '' And '$(Platform)' == 'Vanilla' ">
-        <GameContent>Vanilla</GameContent>
-        <SupportedContent>VANILLA_ID</SupportedContent>
-        <LastWorkingBuild>447596</LastWorkingBuild>
-        <APIVersion>1</APIVersion>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(GameContent)' == '' And '$(Platform)' == 'DLC' ">
-        <GameContent>DLC</GameContent>
-        <SupportedContent>EXPANSION1_ID</SupportedContent>
-        <LastWorkingBuild>469473</LastWorkingBuild>
-        <APIVersion>2</APIVersion>
-    </PropertyGroup>
-
     <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('Windows'))">
         <GameLibDir>F:\Steam\steamapps\common\OxygenNotIncluded_$(GameContent)\OxygenNotIncluded_Data\Managed</GameLibDir>
         <GameDataDir>D:\Documents\Klei\OxygenNotIncluded</GameDataDir>
@@ -28,11 +15,28 @@
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(GameContent)' == 'Vanilla' ">
+        <WithModInfo>true</WithModInfo>
+        <SupportedContent>VANILLA_ID</SupportedContent>
+        <LastWorkingBuild>447596</LastWorkingBuild>
+        <APIVersion>1</APIVersion>
+        <DeployDebug>true</DeployDebug>
+        <DeployRelease>true</DeployRelease>
         <DebugDir>$(DebugRootDir)\[Dev]$(AssemblyName)\archived_versions\vanilla</DebugDir>
         <ReleaseDir>$(ReleaseRootDir)\$(AssemblyName)\archived_versions\vanilla</ReleaseDir>
     </PropertyGroup>
-    <PropertyGroup Condition=" '$(IsCommons)' == 'true' Or '$(GameContent)' == 'DLC' ">
+    <PropertyGroup Condition=" '$(GameContent)' == 'DLC' ">
+        <WithModInfo>true</WithModInfo>
+        <SupportedContent>EXPANSION1_ID</SupportedContent>
+        <LastWorkingBuild>469473</LastWorkingBuild>
+        <APIVersion>2</APIVersion>
+        <DeployDebug>true</DeployDebug>
+        <DeployRelease>true</DeployRelease>
         <DebugDir>$(DebugRootDir)\[Dev]$(AssemblyName)</DebugDir>
+        <ReleaseDir>$(ReleaseRootDir)\$(AssemblyName)</ReleaseDir>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(IsCommons)' == 'true' ">
+        <WithModInfo>false</WithModInfo>
+        <DeployRelease>true</DeployRelease>
         <ReleaseDir>$(ReleaseRootDir)\$(AssemblyName)</ReleaseDir>
     </PropertyGroup>
 </Project>

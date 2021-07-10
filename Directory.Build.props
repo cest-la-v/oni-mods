@@ -16,33 +16,34 @@ common vars https://msdn.microsoft.com/en-us/library/c02as0cs.aspx?f=255&MSPPErr
     </PropertyGroup>
     <PropertyGroup>
         <RootNamespace>AsLimc.$(AssemblyName)</RootNamespace>
-        <Configurations>Debug;Release</Configurations>
-        <Platforms>Vanilla;DLC</Platforms>
+        <Configurations>Vanilla;DLC</Configurations>
+        <Platforms>AnyCPU</Platforms>
         <PlatformTarget>AnyCPU</PlatformTarget>
         <OutputType>Library</OutputType>
+        <OutputPath>bin\$(Configuration)\</OutputPath>
         <TargetFramework>net471</TargetFramework>
         <FileAlignment>512</FileAlignment>
         <LangVersion>latest</LangVersion>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
         <AllowedReferenceRelatedFileExtensions>.none</AllowedReferenceRelatedFileExtensions>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+<!--    </PropertyGroup>-->
+    <!--<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
         <DebugSymbols>true</DebugSymbols>
         <DebugType>full</DebugType>
         <Optimize>false</Optimize>
-        <OutputPath>bin\Debug\</OutputPath>
         <DefineConstants>DEBUG;TRACE</DefineConstants>
-        <DeployLocal>true</DeployLocal>
-        <DeployRelease>false</DeployRelease>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    </PropertyGroup>-->
+<!--    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">-->
         <DebugSymbols>false</DebugSymbols>
         <DebugType>none</DebugType>
         <Optimize>true</Optimize>
-        <OutputPath>bin\Release\</OutputPath>
         <DefineConstants>TRACE</DefineConstants>
-        <DeployLocal>false</DeployLocal>
-        <DeployRelease>true</DeployRelease>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Vanilla' ">
+        <GameContent>Vanilla</GameContent>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'DLC' ">
+        <GameContent>DLC</GameContent>
     </PropertyGroup>
 </Project>

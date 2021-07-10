@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="Directory.Build.user.props" />
+    <Import Project="Directory.Build.user.props"/>
     <ItemDefinitionGroup>
         <Reference>
             <Private>false</Private>
@@ -29,28 +29,29 @@
         <Reference Include="UnityEngine.UI"/>
         <Reference Include="UnityEngine.UnityWebRequestModule"/>
         <!--        <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" PrivateAssets="all"/>-->
-<!--        <ProjectReference Include="..\Commons_$(GameContent)\Commons_$(GameContent).csproj" Private="true" Condition=" '$(UseCommons)' == 'true' "/>-->
-        <Reference Include="Commons_$(GameContent), Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Condition=" '$(UseCommons)' == 'true' ">
-            <HintPath>$(ReleaseRootDir)\Commons_$(GameContent)\Commons_$(GameContent).dll</HintPath>
-<!--            <Private>true</Private>-->
-        </Reference>
-        <Content Include="$(ReleaseRootDir)\Commons_$(GameContent)\Commons_$(GameContent).dll" CopyToOutputDirectory="PreserveNewest" Condition=" '$(UseCommons)' == 'true' "/>
         <ContentWithTargetPath Include="static\**" TargetPath="%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest"/>
+        <Compile Remove="Vanilla\**" Condition=" '$(GameContent)' != 'Vanilla' "/>
+        <Compile Remove="DLC\**" Condition=" '$(GameContent)' != 'DLC' "/>
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(UseCommons)' == 'true' ">
+        <ProjectReference Include="..\Commons\Commons.csproj" Private="false"/>
+        <!--<Reference Include="Commons_$(GameContent), Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>$(ReleaseRootDir)\Commons_$(GameContent)\Commons_$(GameContent).dll</HintPath>
+            &lt;!&ndash;            <Private>true</Private>&ndash;&gt;
+        </Reference>-->
+        <Content Include="$(ReleaseRootDir)\Commons_$(GameContent)\Commons_$(GameContent).dll" CopyToOutputDirectory="PreserveNewest"/>
     </ItemGroup>
     <ItemGroup Condition=" '$(GameContent)' == 'Vanilla' ">
         <PackageReference Include="PLib" Version="3.14.0" Condition="'$(UsePLib)' == 'true'"/>
-        <Compile Remove="DLC\*.cs"/>
     </ItemGroup>
     <ItemGroup Condition=" '$(GameContent)' == 'DLC' ">
         <PackageReference Include="PLib" Version="4.2.0" Condition="'$(UsePLib)' == 'true'"/>
-        <Compile Remove="Vanilla\**" />
-<!--        <None Remove="Vanilla\**" />-->
-<!--        <EmbeddedResource Remove="Vanilla\**" />-->
     </ItemGroup>
 
     <!--    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />-->
 
-    <Target Name="WriteModInfoFile" BeforeTargets="PreBuildEvent" Condition=" '$(IsCommons)' != 'true' ">
+    <Target Name="WriteModInfoFile" BeforeTargets="PreBuildEvent" Condition=" '$(WithModInfo)' == 'true' ">
         <PropertyGroup>
             <ModInfoFile>$(OutputPath)\mod_info.yaml</ModInfoFile>
             <ModInfoFileContent>
@@ -88,8 +89,8 @@ version: $(Version)
         <RemoveDir Directories="$(DebugDir)"/>
         <RemoveDir Directories="$(ReleaseDir)"/>
     </Target>
-    <Target Name="DeployLocal" AfterTargets="Build" Condition=" '$(DeployLocal)' == 'true' ">
-        <Message Text="======================== DeployLocal ========================"/>
+    <Target Name="DeployDebug" AfterTargets="Build" Condition=" '$(DeployDebug)' == 'true' ">
+        <Message Text="======================== DeployDebug ========================"/>
         <ItemGroup>
             <TargetFiles Include="$(TargetDir)\**\*.*"/>
         </ItemGroup>
@@ -102,7 +103,6 @@ version: $(Version)
         </ItemGroup>
         <Copy SourceFiles="@(TargetFiles)" DestinationFiles="@(TargetFiles->'$(ReleaseDir)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true"/>
     </Target>
-    
 
 
 </Project>
