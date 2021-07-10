@@ -66,9 +66,9 @@ namespace AsLimc.HyperReservoir {
             storage.capacityKg = capacityKg;
             storage.SetDefaultStoredItemModifiers(GasReservoirConfig.ReservoirStoredItemModifiers);
             // storage.showCapacityStatusItem = true;
-            VUtils.TrySetField(typeof(Storage), "showCapacityStatusItem", storage, true);
+            ReflectionUtils.TrySetField(typeof(Storage), "showCapacityStatusItem", storage, true);
             // storage.showCapacityAsMainStatus = true;
-            VUtils.TrySetField(typeof(Storage), "showCapacityAsMainStatus", storage, true);
+            ReflectionUtils.TrySetField(typeof(Storage), "showCapacityAsMainStatus", storage, true);
 
             var conduitConsumer = go.AddOrGet<ConduitConsumer>();
             conduitConsumer.conduitType = conduitType;

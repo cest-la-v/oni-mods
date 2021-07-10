@@ -8,7 +8,7 @@ namespace AsLimc.HyperReservoir {
         public static void OnLoad() {
             PUtil.InitLibrary();
             PLocalization.Register();
-            VLib.Init();
+            VLib.Register();
             POptions.RegisterOptions(typeof(Settings));
             Settings.Init(POptions.ReadSettings<Settings>());
         }

@@ -13,7 +13,7 @@ namespace AsLimc.HyperReservoir {
             base.OnLoad(harmony);
             PUtil.InitLibrary();
             new PLocalization().Register();
-            VLib.Init();
+            VLib.Register();
             new POptions().RegisterOptions(this, typeof(Settings));
             Settings.Init(POptions.ReadSettings<Settings>());
         }
