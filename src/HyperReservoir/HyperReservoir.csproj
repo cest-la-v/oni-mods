@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <ProjectGuid>{E5E61711-9A97-4FCD-9B8E-669CB147938D}</ProjectGuid>
     <AssemblyName>HyperReservoir</AssemblyName>
     <AssemblyTitle>Hyper Reservoir</AssemblyTitle>
-    <Version>1.3.0.4</Version>
+    <Version>1.4.0.0</Version>
   </PropertyGroup>
   <PropertyGroup>
     <UsePLib>true</UsePLib>

@@ -8,12 +8,14 @@ namespace AsLimc.HyperReservoir {
     [ModInfo("AsLimc.HyperReservoir.LocStrings.Settings.MOD_NAME", "https://github.com/as-limc/oni-mods", collapse: true)]
     [JsonObject(MemberSerialization.OptIn)]
     [RestartRequired]
-    public class HyperReservoirSettings {
-        private static HyperReservoirSettings _Instance;
-        public static HyperReservoirSettings Get() => _Instance;
+    public class Settings {
+        private static Settings _INSTANCE = new Settings();
+        public static Settings Get() => _INSTANCE;
 
-        public static void Init() {
-            _Instance ??= POptions.ReadSettings<HyperReservoirSettings>() ?? new HyperReservoirSettings();
+        public static void Init(Settings settings) {
+            if (settings != null) {
+                _INSTANCE = settings;
+            }
         }
 
         [Option("AsLimc.HyperReservoir.LocStrings.Settings.LiquidReservoirSteelMassKg.NAME",
@@ -66,7 +68,7 @@ namespace AsLimc.HyperReservoir {
         [JsonProperty]
         public float GasReservoirCapacityMultiplier { get; set; }
 
-        public HyperReservoirSettings() {
+        public Settings() {
             LiquidReservoirSteelMassKg = 800f;
             LiquidReservoirPlasticMassKg = 100f;
             LiquidReservoirPowerConsumptionWatts = 40f;

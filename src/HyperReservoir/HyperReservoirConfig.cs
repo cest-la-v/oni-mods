@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using AsLimc.commons;
+using AsLimc.Commons;
 using TUNING;
 using UnityEngine;
 using static STRINGS.BUILDINGS.PREFABS.SMARTRESERVOIR;
@@ -95,15 +95,15 @@ namespace AsLimc.HyperReservoir {
             : base(LocStrings.HyperLiquidReservoir.NAME, LocStrings.HyperLiquidReservoir.DESC, LocStrings.HyperLiquidReservoir.EFFECT,
                 ID, "liquidreservoir_kanim", 2, 3,
                 new Dictionary<string, float> {
-                    {SimHashes.Steel.ToString(), HyperReservoirSettings.Get().LiquidReservoirSteelMassKg},
-                    {MATERIALS.PLASTICS[0], HyperReservoirSettings.Get().LiquidReservoirPlasticMassKg}
+                    {SimHashes.Steel.ToString(), Settings.Get().LiquidReservoirSteelMassKg},
+                    {MATERIALS.PLASTICS[0], Settings.Get().LiquidReservoirPlasticMassKg}
                 },
                 OverlayScreen.LiquidVentIDs,
                 OverlayModes.LiquidConduits.ID,
                 STORAGEFILTERS.LIQUIDS,
-                5000f * HyperReservoirSettings.Get().LiquidReservoirCapacityMultiplier,
+                5000f * Settings.Get().LiquidReservoirCapacityMultiplier,
                 ConduitType.Liquid,
-                HyperReservoirSettings.Get().LiquidReservoirPowerConsumptionWatts) {
+                Settings.Get().LiquidReservoirPowerConsumptionWatts) {
         }
     }
 
@@ -114,15 +114,15 @@ namespace AsLimc.HyperReservoir {
             : base(LocStrings.HyperGasReservoir.NAME, LocStrings.HyperGasReservoir.DESC, LocStrings.HyperGasReservoir.EFFECT,
                 ID, "gasstorage_kanim", 5, 3,
                 new Dictionary<string, float> {
-                    {SimHashes.Steel.ToString(), HyperReservoirSettings.Get().GasReservoirSteelMassKg},
-                    {MATERIALS.PLASTICS[0], HyperReservoirSettings.Get().GasReservoirPlasticMassKg}
+                    {SimHashes.Steel.ToString(), Settings.Get().GasReservoirSteelMassKg},
+                    {MATERIALS.PLASTICS[0], Settings.Get().GasReservoirPlasticMassKg}
                 },
                 OverlayScreen.GasVentIDs,
                 OverlayModes.GasConduits.ID,
                 STORAGEFILTERS.GASES,
-                150f * HyperReservoirSettings.Get().GasReservoirCapacityMultiplier,
+                150f * Settings.Get().GasReservoirCapacityMultiplier,
                 ConduitType.Gas,
-                HyperReservoirSettings.Get().GasReservoirPowerConsumptionWatts) {
+                Settings.Get().GasReservoirPowerConsumptionWatts) {
         }
     }
 }
