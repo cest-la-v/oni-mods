@@ -14,17 +14,25 @@
     </PropertyGroup>
 
     <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('Windows'))">
-        <GlobalPackagesDirectory>C:\Users\Vincent\.nuget\packages</GlobalPackagesDirectory>
         <GameLibDir>F:\Steam\steamapps\common\OxygenNotIncluded_$(GameContent)\OxygenNotIncluded_Data\Managed</GameLibDir>
         <GameDataDir>D:\Documents\Klei\OxygenNotIncluded</GameDataDir>
-        <GameDebugDir>$(GameDataDir)\mods\Local</GameDebugDir>
+        <DebugRootDir>$(GameDataDir)\mods\Local</DebugRootDir>
+        <ReleaseRootDir>..\..\Releases</ReleaseRootDir>
     </PropertyGroup>
 
     <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('OSX'))">
-        <GlobalPackagesDirectory>$(HOME)\.nuget\packages</GlobalPackagesDirectory>
         <GameLibDir>$(SteamFolder)/steamapps/common/OxygenNotIncluded/OxygenNotIncluded.app/Contents/Resources/Data/Managed</GameLibDir>
         <GameDataDir>$(HOME)\Library\Application Support\unity.Klei.Oxygen Not Included</GameDataDir>
-        <GameDebugDir>$(GameDataDir)\mods\Dev</GameDebugDir>
-        <!--        <SteamFolder>$(HOME)/Library/Application Support/Steam</SteamFolder>-->
+        <DebugRootDir>$(GameDataDir)\mods\Dev</DebugRootDir>
+        <ReleaseRootDir>..\..\Releases</ReleaseRootDir>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(GameContent)' == 'Vanilla' ">
+        <DebugDir>$(DebugRootDir)\[Dev]$(AssemblyName)\archived_versions\vanilla</DebugDir>
+        <ReleaseDir>$(ReleaseRootDir)\$(AssemblyName)\archived_versions\vanilla</ReleaseDir>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(IsCommons)' == 'true' Or '$(GameContent)' == 'DLC' ">
+        <DebugDir>$(DebugRootDir)\[Dev]$(AssemblyName)</DebugDir>
+        <ReleaseDir>$(ReleaseRootDir)\$(AssemblyName)</ReleaseDir>
     </PropertyGroup>
 </Project>

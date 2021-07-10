@@ -11,30 +11,31 @@
         <AssemblySearchPaths>$(GameLibDir);$(AssemblySearchPaths)</AssemblySearchPaths>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="System"/>
-        <Reference Include="System.Core"/>
-        <Reference Include="System.Data"/>
-        <Reference Include="System.Xml"/>
         <Reference Include="0Harmony"/>
         <Reference Include="Assembly-CSharp"/>
         <Reference Include="Assembly-CSharp-firstpass"/>
         <Reference Include="FMODUnity"/>
         <Reference Include="Newtonsoft.Json"/>
+        <Reference Include="System"/>
+        <Reference Include="System.Core"/>
+        <Reference Include="System.Data"/>
+        <Reference Include="System.Xml"/>
+        <Reference Include="Unity.TextMeshPro"/>
         <Reference Include="UnityEngine"/>
         <Reference Include="UnityEngine.CoreModule"/>
-        <Reference Include="UnityEngine.UI"/>
-        <Reference Include="Unity.TextMeshPro"/>
+        <Reference Include="UnityEngine.ImageConversionModule"/>
         <Reference Include="UnityEngine.JSONSerializeModule"/>
         <Reference Include="UnityEngine.TextRenderingModule"/>
-        <Reference Include="UnityEngine.ImageConversionModule"/>
+        <Reference Include="UnityEngine.UI"/>
         <Reference Include="UnityEngine.UnityWebRequestModule"/>
         <!--        <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" PrivateAssets="all"/>-->
-<!--        <ProjectReference Include="..\commons_$(GameContent)\Commons_$(GameContent).csproj" Private="false" Condition=" '$(UseCommons)' != 'false' "/>-->
-        <Reference Include="Commons_$(GameContent).dll" Condition=" '$(UseCommons)' == 'true' ">
-            <HintPath>$(SolutionDir)\Release\Commons_$(GameContent)</HintPath>
-            <Private>true</Private>
+<!--        <ProjectReference Include="..\Commons_$(GameContent)\Commons_$(GameContent).csproj" Private="true" Condition=" '$(UseCommons)' == 'true' "/>-->
+        <Reference Include="Commons_$(GameContent), Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Condition=" '$(UseCommons)' == 'true' ">
+            <HintPath>$(ReleaseRootDir)\Commons_$(GameContent)\Commons_$(GameContent).dll</HintPath>
+<!--            <Private>true</Private>-->
         </Reference>
-        <ContentWithTargetPath Include="static\**" TargetPath="%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest"/>
+        <Content Include="$(ReleaseRootDir)\Commons_$(GameContent)\Commons_$(GameContent).dll" CopyToOutputDirectory="PreserveNewest" Condition=" '$(UseCommons)' == 'true' "/>
+        <ContentWithTargetPath Include="static\**" TargetPath="%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest"/>
     </ItemGroup>
     <ItemGroup Condition=" '$(GameContent)' == 'Vanilla' ">
         <PackageReference Include="PLib" Version="3.14.0" Condition="'$(UsePLib)' == 'true'"/>
@@ -49,7 +50,7 @@
 
     <!--    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />-->
 
-    <Target Name="WriteModInfoFile" BeforeTargets="PreBuildEvent">
+    <Target Name="WriteModInfoFile" BeforeTargets="PreBuildEvent" Condition=" '$(IsCommons)' != 'true' ">
         <PropertyGroup>
             <ModInfoFile>$(OutputPath)\mod_info.yaml</ModInfoFile>
             <ModInfoFileContent>
@@ -84,23 +85,18 @@ version: $(Version)
     <Target Name="AfterClean" AfterTargets="Clean">
         <Message Text="======================== AfterClean ========================"/>
         <RemoveDir Directories="$(TargetDir)"/> <!-- bin -->
-        <RemoveDir Directories="$(GameDebugDir)\[Dev]$(AssemblyName)"/>
+        <RemoveDir Directories="$(DebugDir)"/>
+        <RemoveDir Directories="$(ReleaseDir)"/>
     </Target>
     <Target Name="DeployLocal" AfterTargets="Build" Condition=" '$(DeployLocal)' == 'true' ">
         <Message Text="======================== DeployLocal ========================"/>
         <ItemGroup>
             <TargetFiles Include="$(TargetDir)\**\*.*"/>
         </ItemGroup>
-        <Copy SourceFiles="@(TargetFiles)" DestinationFiles="@(TargetFiles->'$(GameDebugDir)\[Dev]$(AssemblyName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true"/>
+        <Copy SourceFiles="@(TargetFiles)" DestinationFiles="@(TargetFiles->'$(DebugDir)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true"/>
     </Target>
     <Target Name="DeployRelease" AfterTargets="Build" Condition=" '$(DeployRelease)' == 'true' ">
         <Message Text="======================== DeployRelease ========================"/>
-        <PropertyGroup Condition=" '$(GameContent)' == 'Vanilla' ">
-            <ReleaseDir>..\..\Releases\$(AssemblyName)\archived_versions\vanilla</ReleaseDir>
-        </PropertyGroup>
-        <PropertyGroup Condition=" '$(GameContent)' == 'DLC' ">
-            <ReleaseDir>..\..\Releases\$(AssemblyName)</ReleaseDir>
-        </PropertyGroup>
         <ItemGroup>
             <TargetFiles Include="$(TargetDir)\**\*.*"/>
         </ItemGroup>

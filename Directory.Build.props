@@ -18,33 +18,30 @@ common vars https://msdn.microsoft.com/en-us/library/c02as0cs.aspx?f=255&MSPPErr
         <RootNamespace>AsLimc.$(AssemblyName)</RootNamespace>
         <Configurations>Debug;Release</Configurations>
         <Platforms>Vanilla;DLC</Platforms>
+        <PlatformTarget>AnyCPU</PlatformTarget>
         <OutputType>Library</OutputType>
         <TargetFramework>net471</TargetFramework>
         <FileAlignment>512</FileAlignment>
         <LangVersion>latest</LangVersion>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
         <AllowedReferenceRelatedFileExtensions>.none</AllowedReferenceRelatedFileExtensions>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
         <DebugSymbols>true</DebugSymbols>
         <DebugType>full</DebugType>
         <Optimize>false</Optimize>
         <OutputPath>bin\Debug\</OutputPath>
         <DefineConstants>DEBUG;TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
         <DeployLocal>true</DeployLocal>
         <DeployRelease>false</DeployRelease>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
         <DebugSymbols>false</DebugSymbols>
         <DebugType>none</DebugType>
         <Optimize>true</Optimize>
         <OutputPath>bin\Release\</OutputPath>
         <DefineConstants>TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
         <DeployLocal>false</DeployLocal>
         <DeployRelease>true</DeployRelease>
     </PropertyGroup>
