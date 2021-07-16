@@ -1,4 +1,3 @@
-using KMod;
 using Newtonsoft.Json;
 using PeterHan.PLib.Options;
 
@@ -9,12 +8,13 @@ namespace AsLimc.SimplerPipPlantRule
     [JsonObject(MemberSerialization.OptIn)]
     internal class Settings
     {
-        private static Settings _INSTANCE;
+        private static Settings _INSTANCE = new Settings();
         public static Settings Get() => _INSTANCE;
 
-        public static void Init(UserMod2 modLoader) {
-            new POptions().RegisterOptions(modLoader, typeof(Settings));
-            _INSTANCE ??= POptions.ReadSettings<Settings>() ?? new Settings();
+        public static void Init(Settings settings) {
+            if (settings != null) {
+                _INSTANCE = settings;
+            }
         }
         
         [Option("Search Min Interval (seconds)", "min interval for seed search.", null)]
