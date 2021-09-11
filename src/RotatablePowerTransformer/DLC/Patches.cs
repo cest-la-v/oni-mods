@@ -8,7 +8,8 @@ namespace MightyVincent
         public static void Postfix(BuildingDef __result)
         {
             __result.PermittedRotations = PermittedRotations.R360;
-            __result.BuildLocationRule = BuildLocationRule.OnFloorOrBuildingAttachPoint;
+            __result.BuildLocationRule = BuildLocationRule.OnFoundationRotatable;
+            __result.ContinuouslyCheckFoundation = true;
         }
     }
 
@@ -18,7 +19,8 @@ namespace MightyVincent
         public static void Postfix(BuildingDef __result)
         {
             __result.PermittedRotations = PermittedRotations.R360;
-            __result.BuildLocationRule = BuildLocationRule.OnFloorOrBuildingAttachPoint;
+            __result.BuildLocationRule = BuildLocationRule.OnFoundationRotatable;
+            __result.ContinuouslyCheckFoundation = true;
         }
     }
 }
