@@ -17,7 +17,7 @@
     <PropertyGroup Condition=" '$(GameContent)' == 'Vanilla' ">
         <WithModInfo>true</WithModInfo>
         <SupportedContent>VANILLA_ID</SupportedContent>
-        <LastWorkingBuild>447596</LastWorkingBuild>
+        <LastWorkingBuild>469300</LastWorkingBuild>
         <APIVersion>1</APIVersion>
         <DeployDebug>true</DeployDebug>
         <DeployRelease>true</DeployRelease>
