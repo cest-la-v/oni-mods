@@ -6,7 +6,6 @@ using UnityEngine;
 namespace AsLimc.LaserTurret {
     public class LaserTurretConfig : VBuildingConfig {
         public const string ID = "LaserTurret";
-        private const int _RADIUS = 7;
         private readonly int rangeX;
         private readonly int rangeY;
         private readonly int rangeWidth;
@@ -33,10 +32,11 @@ namespace AsLimc.LaserTurret {
             noise: NOISE_POLLUTION.NOISY.TIER0,
             overlayTags: OverlayScreen.SolidConveyorIDs
             ) {
-            rangeX = -_RADIUS;
+            var radius = Settings.Get().Radius;
+            rangeX = -radius;
             rangeY = 0;
-            rangeWidth = width + _RADIUS * 2;
-            rangeHeight = height + _RADIUS;
+            rangeWidth = width + radius * 2;
+            rangeHeight = height + radius;
         }
 
         protected override void ConfigureBuildingDef(BuildingDef buildingDef) {
