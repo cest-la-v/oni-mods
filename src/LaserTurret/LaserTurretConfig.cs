@@ -53,7 +53,8 @@ namespace AsLimc.LaserTurret {
         }
 
         public override void ConfigureBuildingTemplate(GameObject go, Tag prefabTag) {
-            go.AddOrGet<Operational>();
+            var operational = go.AddOrGet<Operational>();
+            operational.SetActive(false);
             go.AddOrGet<LoopingSounds>();
             go.AddOrGet<MiningSounds>();
             go.AddOrGet<KSelectable>();
