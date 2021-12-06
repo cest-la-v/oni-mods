@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using AsLimc.Commons;
 using TUNING;
 using UnityEngine;
@@ -60,10 +61,10 @@ namespace AsLimc.LaserTurret {
             var storage = go.AddOrGet<Storage>();
             storage.allowItemRemoval = false;
             storage.showDescriptor = true;
-            var filters = new List<Tag>();
-            filters.AddRange(STORAGEFILTERS.BAGABLE_CREATURES);
-            filters.AddRange(STORAGEFILTERS.SWIMMING_CREATURES);
-            storage.storageFilters = filters;
+            var filters = new HashSet<Tag>();
+            filters.UnionWith(STORAGEFILTERS.BAGABLE_CREATURES);
+            filters.UnionWith(STORAGEFILTERS.SWIMMING_CREATURES);
+            storage.storageFilters = filters.ToList();
             storage.allowSettingOnlyFetchMarkedItems = false;
             go.AddOrGet<TreeFilterable>();
         }
