@@ -46,7 +46,7 @@
         <PackageReference Include="PLib" Version="3.14.0" Condition="'$(UsePLib)' == 'true'"/>
     </ItemGroup>
     <ItemGroup Condition=" '$(GameContent)' == 'DLC' ">
-        <PackageReference Include="PLib" Version="4.2.0" Condition="'$(UsePLib)' == 'true'"/>
+        <PackageReference Include="PLib" Version="4.8.1" Condition="'$(UsePLib)' == 'true'"/>
     </ItemGroup>
 
     <!--    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />-->

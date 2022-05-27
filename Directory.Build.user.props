@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('Windows'))">
-        <GameLibDir>F:\Steam\steamapps\common\OxygenNotIncluded_$(GameContent)\OxygenNotIncluded_Data\Managed</GameLibDir>
+        <GameLibDir>E:\Steam\steamapps\common\OxygenNotIncluded_$(GameContent)\OxygenNotIncluded_Data\Managed</GameLibDir>
         <GameDataDir>D:\Documents\Klei\OxygenNotIncluded</GameDataDir>
         <DebugRootDir>$(GameDataDir)\mods\Local</DebugRootDir>
         <ReleaseRootDir>..\..\Releases</ReleaseRootDir>
