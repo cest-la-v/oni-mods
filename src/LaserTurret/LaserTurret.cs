@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using FMODUnity;
 using KSerialization;
 using UnityEngine;
@@ -29,7 +30,7 @@ namespace AsLimc.LaserTurret {
 
         // effect
         private static readonly HashedString _HASH_ROTATION = (HashedString) "rotation";
-        [EventRef] private string rotateSound = "AutoMiner_rotate";
+        private string rotateSoundName = "AutoMiner_rotate";
         [MyCmpGet] private Rotatable rotatable;
         private const float TURN_RATE = 180f;
         private float _armRot = -45f;
@@ -58,7 +59,7 @@ namespace AsLimc.LaserTurret {
         protected override void OnPrefabInit() {
             base.OnPrefabInit();
             simRenderLoadBalance = true;
-            GetComponent<TreeFilterable>().OnFilterChanged += OnFilterChanged;
+            GetComponent<TreeFilterable>().OnFilterChanged = OnFilterChanged;
         }
 
         protected override void OnSpawn() {
@@ -82,7 +83,7 @@ namespace AsLimc.LaserTurret {
             _armGo.SetActive(false);
             _armGo.transform.parent = animCtrl.transform;
             _loopingSounds = _armGo.AddComponent<LoopingSounds>();
-            rotateSound = GlobalAssets.GetSound(rotateSound);
+            rotateSoundName = GlobalAssets.GetSound(rotateSoundName);
             _armGo.AddComponent<KPrefabID>().PrefabTag = new Tag(armName);
             armAnimCtrl = _armGo.AddComponent<KBatchedAnimController>();
             armAnimCtrl.AnimFiles = new[] {animCtrl.AnimFiles[0]};
@@ -126,7 +127,7 @@ namespace AsLimc.LaserTurret {
                     // something is still dying, exit
                     return null;
 
-                if (!creature.HasAnyTags(filterTags))
+                if (!creature.HasAnyTags(filterTags.ToArray()))
                     // filtered
                     continue;
 
@@ -278,20 +279,20 @@ namespace AsLimc.LaserTurret {
             _armRot += deltaAngle;
             _armRot = MathUtil.Wrap(-180f, 180f, _armRot);
             _armGo.transform.rotation = Quaternion.Euler(0.0f, 0.0f, _armRot);
-            _loopingSounds.SetParameter(rotateSound, _HASH_ROTATION, _armRot);
+            _loopingSounds.SetParameter(rotateSoundName, _HASH_ROTATION, _armRot);
         }
 
         private void StartRotateSound() {
             if (_rotateSoundPlaying)
                 return;
-            _loopingSounds.StartSound(rotateSound);
+            _loopingSounds.StartSound(rotateSoundName);
             _rotateSoundPlaying = true;
         }
 
         private void StopRotateSound() {
             if (!_rotateSoundPlaying)
                 return;
-            _loopingSounds.StopSound(rotateSound);
+            _loopingSounds.StopSound(rotateSoundName);
             _rotateSoundPlaying = false;
         }
 
@@ -323,8 +324,8 @@ namespace AsLimc.LaserTurret {
             LookupTarget();
         }
 
-        private void OnFilterChanged(Tag[] tags) {
-            GetComponent<KBatchedAnimController>().TintColour = tags == null || tags.Length == 0 ? noFilterTint : filterTint;
+        private void OnFilterChanged(HashSet<Tag> tags) {
+            GetComponent<KBatchedAnimController>().TintColour = tags == null || tags.Count == 0 ? noFilterTint : filterTint;
             ClearTarget();
             LookupTarget();
         }
