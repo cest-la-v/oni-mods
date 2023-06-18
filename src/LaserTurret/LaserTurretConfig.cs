@@ -7,10 +7,11 @@ using UnityEngine;
 namespace AsLimc.LaserTurret {
     public class LaserTurretConfig : VBuildingConfig {
         public const string ID = "LaserTurret";
-        private readonly int rangeX;
-        private readonly int rangeY;
-        private readonly int rangeWidth;
-        private readonly int rangeHeight;
+        private readonly int radius;
+        private readonly int _rangeMinX;
+        private readonly int _rangeMinY;
+        private readonly int _rangeWidth;
+        private readonly int _rangeHeight;
 
         public LaserTurretConfig() : base(
             LocStrings.LaserTurret.NAME,
@@ -33,11 +34,11 @@ namespace AsLimc.LaserTurret {
             noise: NOISE_POLLUTION.NOISY.TIER0,
             overlayTags: OverlayScreen.SolidConveyorIDs
             ) {
-            var radius = Settings.Get().Radius;
-            rangeX = -radius;
-            rangeY = 0;
-            rangeWidth = width + radius * 2;
-            rangeHeight = height + radius;
+            radius = Settings.Get().Radius;
+            _rangeMinX = -radius;
+            _rangeMinY = 0;
+            _rangeWidth = width + radius * 2;
+            _rangeHeight = height + radius;
         }
 
         protected override void ConfigureBuildingDef(BuildingDef buildingDef) {
@@ -83,22 +84,22 @@ namespace AsLimc.LaserTurret {
 
         public override void DoPostConfigureComplete(GameObject go) {
             var turret = go.AddOrGet<LaserTurret>();
-            turret.rangeX = rangeX;
-            turret.rangeY = rangeY;
-            turret.rangeWidth = rangeWidth;
-            turret.rangeHeight = rangeHeight;
+            turret.rangeX = _rangeMinX;
+            turret.rangeY = _rangeMinY;
+            turret.rangeWidth = _rangeWidth;
+            turret.rangeHeight = _rangeHeight;
             AddVisualizer(go, false);
         }
 
         private void AddVisualizer(GameObject go, bool movable) {
-            var visualizer = go.AddOrGet<StationaryChoreRangeVisualizer>();
-            visualizer.x = rangeX;
-            visualizer.y = rangeY;
-            visualizer.width = rangeWidth;
-            visualizer.height = rangeHeight;
-            visualizer.movable = movable;
-            visualizer.blocking_tile_visible = false;
-            go.GetComponent<KPrefabID>().instantiateFn += o => o.GetComponent<StationaryChoreRangeVisualizer>().blocking_cb = LaserTurret.RangeBlockingCallback;
+            var visualizer = go.AddOrGet<RangeVisualizer>();
+            visualizer.RangeMin.x = -radius;
+            visualizer.RangeMin.y = 0;
+            visualizer.RangeMax.x = radius;
+            visualizer.RangeMax.y = radius;
+            // visualizer.OriginOffset = new Vector2I(0, 1);
+            visualizer.BlockingTileVisible = false;
+            go.GetComponent<KPrefabID>().instantiateFn += o => o.GetComponent<RangeVisualizer>().BlockingCb = LaserTurret.RangeBlockingCallback;
         }
     }
 }

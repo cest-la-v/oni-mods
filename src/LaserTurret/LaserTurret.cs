@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using FMODUnity;
 using KSerialization;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 #pragma warning disable 649
 

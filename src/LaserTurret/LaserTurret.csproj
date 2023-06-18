@@ -4,7 +4,7 @@
     <ProjectGuid>{D599AAF7-D94E-48D1-B345-4ADCDA04F4C5}</ProjectGuid>
     <AssemblyName>LaserTurret</AssemblyName>
     <AssemblyTitle>Laser Turret</AssemblyTitle>
-    <Version>2.0.2.2</Version>
+    <Version>2.2.0.0</Version>
   </PropertyGroup>
   <PropertyGroup>
     <UsePLib>true</UsePLib>
