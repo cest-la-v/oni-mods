@@ -17,7 +17,7 @@
     <PropertyGroup Condition=" '$(GameContent)' == 'Vanilla' ">
         <WithModInfo>true</WithModInfo>
         <SupportedContent>VANILLA_ID</SupportedContent>
-        <LastWorkingBuild>469300</LastWorkingBuild>
+        <LastWorkingBuild>561558</LastWorkingBuild>
         <APIVersion>1</APIVersion>
         <DeployDebug>true</DeployDebug>
         <DeployRelease>true</DeployRelease>
@@ -27,7 +27,7 @@
     <PropertyGroup Condition=" '$(GameContent)' == 'DLC' ">
         <WithModInfo>true</WithModInfo>
         <SupportedContent>ALL</SupportedContent>
-        <LastWorkingBuild>471618</LastWorkingBuild>
+        <LastWorkingBuild>561558</LastWorkingBuild>
         <APIVersion>2</APIVersion>
         <DeployDebug>true</DeployDebug>
         <DeployRelease>true</DeployRelease>
