@@ -16,7 +16,7 @@ Completely rewrote the light algorithm, making the shape and brightness much mor
 
 [h1]Useful Links[/h1]
 
-- [url=https://github.com/as-limc/oni-mods]My GitHub[/url]
+- [url=https://github.com/viva-la-v/oni-mods]My GitHub[/url]
 - [url=https://forums.kleientertainment.com/forums/forum/204-oxygen-not-included-mods-and-tools/][Oxygen Not Included] - Mods and Tools - Klei Entertainment Forums[/url]
 - [url=https://oni-db.com/]Oxygen Not Included Database by Fabrizio Filizola[/url]
 - [url=https://github.com/peterhaneve/ONIMods/tree/master/PLib]peterhaneve/ONIMods/PLib[/url]
@@ -37,7 +37,7 @@ Completely rewrote the light algorithm, making the shape and brightness much mor
 
 [h1]相关链接[/h1]
 
-- [url=https://github.com/as-limc/oni-mods]My GitHub[/url]
+- [url=https://github.com/viva-la-v/oni-mods]My GitHub[/url]
 - [url=https://forums.kleientertainment.com/forums/forum/204-oxygen-not-included-mods-and-tools/][Oxygen Not Included] - Mods and Tools - Klei Entertainment Forums[/url]
 - [url=https://oni-db.com/]Oxygen Not Included Database by Fabrizio Filizola[/url]
 - [url=https://github.com/peterhaneve/ONIMods/tree/master/PLib]peterhaneve/ONIMods/PLib[/url]
