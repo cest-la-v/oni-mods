@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('Windows'))">
-        <GameLibDir>E:\Steam\steamapps\common\OxygenNotIncluded_$(GameContent)\OxygenNotIncluded_Data\Managed</GameLibDir>
+        <GameLibDir>E:\SteamLibrary\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed</GameLibDir>
         <GameDataDir>D:\Documents\Klei\OxygenNotIncluded</GameDataDir>
         <DebugRootDir>$(GameDataDir)\mods\Local</DebugRootDir>
         <ReleaseRootDir>..\..\Releases</ReleaseRootDir>
@@ -17,7 +17,7 @@
     <PropertyGroup Condition=" '$(GameContent)' == 'Vanilla' ">
         <WithModInfo>true</WithModInfo>
         <SupportedContent>VANILLA_ID</SupportedContent>
-        <LastWorkingBuild>561558</LastWorkingBuild>
+        <LastWorkingBuild>575720</LastWorkingBuild>
         <APIVersion>1</APIVersion>
         <DeployDebug>true</DeployDebug>
         <DeployRelease>true</DeployRelease>
@@ -27,7 +27,7 @@
     <PropertyGroup Condition=" '$(GameContent)' == 'DLC' ">
         <WithModInfo>true</WithModInfo>
         <SupportedContent>ALL</SupportedContent>
-        <LastWorkingBuild>561558</LastWorkingBuild>
+        <LastWorkingBuild>575720</LastWorkingBuild>
         <APIVersion>2</APIVersion>
         <DeployDebug>true</DeployDebug>
         <DeployRelease>true</DeployRelease>
