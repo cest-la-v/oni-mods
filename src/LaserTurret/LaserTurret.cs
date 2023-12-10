@@ -133,7 +133,7 @@ namespace AsLimc.LaserTurret {
                     // filtered
                     continue;
 
-                if (!IsAttackable(creature))
+                if (!IsAbleToAttack(creature))
                     continue;
 
                 filteredCreatures.Add(creature);
@@ -198,7 +198,7 @@ namespace AsLimc.LaserTurret {
             return fertilityTimes;
         }
 
-        private bool IsAttackable(KPrefabID creature) {
+        private bool IsAbleToAttack(KPrefabID creature) {
             return creature != null
                    // Trussed 捆绑
                    && !creature.HasTag(GameTags.Creatures.Bagged)
@@ -211,7 +211,7 @@ namespace AsLimc.LaserTurret {
             var creatureCell = Grid.PosToCell(creaturePos);
             if (!Grid.IsValidCell(creatureCell))
                 return false;
-            if (!rangeRect.Contains(creaturePos, true))
+            if (!rangeRect.Contains(new Vector3(Convert.ToSingle(Math.Floor(creaturePos.x)), Convert.ToSingle(Math.Floor(creaturePos.y)), creaturePos.z), true))
                 return false;
             var creatureXY = Grid.CellToXY(creatureCell);
             return Grid.TestLineOfSight(selfXY.x, selfXY.y, creatureXY.x, creatureXY.y, RangeBlockingCallback);
@@ -338,7 +338,7 @@ namespace AsLimc.LaserTurret {
 
         public void OnAttackUpdate(float dt) {
             // target
-            if (!IsAttackable(target)) {
+            if (!IsAbleToAttack(target)) {
                 StopAttackEffect();
                 ClearTarget();
                 return;
