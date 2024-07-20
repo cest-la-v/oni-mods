@@ -6,12 +6,22 @@ namespace AsLimc.SmootherLight
 {
     internal static class Patches
     {
-        [HarmonyPatch(typeof(DiscreteShadowCaster), "GetVisibleCells")]
-        internal class DiscreteShadowCaster_GetVisibleCells
+        // [HarmonyPatch(typeof(DiscreteShadowCaster), "GetVisibleCells")]
+        // internal class DiscreteShadowCaster_GetVisibleCells
+        // {
+        //     public static bool Prefix(int cell, List<int> visiblePoints, int range, LightShape shape)
+        //     {
+        //         LightGridTool.GetVisibleCells(cell, visiblePoints, range, shape);
+        //         return false;
+        //     }
+        // }
+
+        [HarmonyPatch(typeof(DiscreteShadowCaster), "GetVisDistance")]
+        internal class DiscreteShadowCaster_GetVisDistance
         {
-            public static bool Prefix(int cell, List<int> visiblePoints, int range, LightShape shape)
+            private static bool Prefix(int pX1, int pY1, int pX2, int pY2, ref int __result)
             {
-                LightGridTool.GetVisibleCells(cell, visiblePoints, range, shape);
+                __result = (pX1 - pX2) * (pX1 - pX2) + (pY1 - pY2) * (pY1 - pY2) - Settings.Get().LightRangeTolerance;
                 return false;
             }
         }

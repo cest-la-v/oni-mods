@@ -10,45 +10,17 @@ namespace AsLimc.SmootherLight
 
         public static void GetVisibleCells(int cell, List<int> visiblePoints, int range, LightShape shape)
         {
-            Predicate<int> occludeFilter;
-//            if (Patches.settings.LightThroughMeshTiles)
-//            {
-//                var meshCellLookup = Components.BuildingCompletes.Items
-//                    .Where(complete => _MESH_TILE_IDS.Contains(complete.PrefabID().ToString()))
-//                    .ToLookup(complete => complete.GetCell());
-//                occludeFilter = pointCell =>
-//                {
-//                    if (!DoesOcclude(pointCell)) return false;
-//                    // 阻塞
-//                    var gameObject = Grid.Objects[pointCell, (int) ObjectLayer.Building];
-//                    if (gameObject == null) return true;
-//                    var complete = gameObject.GetComponent<BuildingComplete>();
-//                    if (complete == null) return true;
-//                    return !_MESH_TILE_IDS.Contains(complete.PrefabID().ToString());
-//                };
-//            }
-//            else
-            {
-                occludeFilter = DoesOcclude;
-            }
-
-            if (occludeFilter.Invoke(cell))
+            if (DoesOcclude(cell))
                 return;
 
             var origin = Grid.CellToXY(cell);
             var lightArea = LightArea.Create(range, Vector2.zero);
-            ICellEnumerator enumerator;
-            switch (shape)
+            ICellEnumerator enumerator = shape switch
             {
-                case LightShape.Circle:
-                    enumerator = new RectBorder(origin, range);
-                    break;
-                case LightShape.Cone:
-                    enumerator = new TrapezoidLayer(origin, range);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(shape), shape, null);
-            }
+                LightShape.Circle => new RectBorder(origin, range),
+                LightShape.Cone => new TrapezoidLayer(origin, range),
+                _ => throw new ArgumentOutOfRangeException(nameof(shape), shape, null)
+            };
 
             foreach (var point in enumerator)
             {
@@ -66,7 +38,7 @@ namespace AsLimc.SmootherLight
                     continue;
 
                 var pointCell = Grid.PosToCell(point);
-                if (occludeFilter.Invoke(pointCell))
+                if (DoesOcclude(pointCell))
                     // 不透光，更新障碍
                     lightArea.AddCellBlock(deltaPoint);
                 else if (!lightArea.IsBlocking(deltaPoint))
