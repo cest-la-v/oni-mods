@@ -27,7 +27,7 @@
     <PropertyGroup Condition=" '$(GameContent)' == 'DLC' ">
         <WithModInfo>true</WithModInfo>
         <SupportedContent>ALL</SupportedContent>
-        <LastWorkingBuild>575720</LastWorkingBuild>
+        <LastWorkingBuild>622509</LastWorkingBuild>
         <APIVersion>2</APIVersion>
         <DeployDebug>true</DeployDebug>
         <DeployRelease>true</DeployRelease>
