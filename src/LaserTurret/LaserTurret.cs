@@ -74,7 +74,7 @@ namespace AsLimc.LaserTurret {
             // range detector
             var anchorMinRotatedOffset = rotatable.GetRotatedCellOffset(new CellOffset(rangeX, rangeY));
             var anchorMinRotated = Grid.CellToPos2D(Grid.OffsetCell(selfCell, anchorMinRotatedOffset));
-            var sizeRotatedOffset = rotatable.GetRotatedCellOffset(new CellOffset(rangeWidth - 1, rangeHeight - 1));
+            var sizeRotatedOffset = rotatable.GetRotatedCellOffset(new CellOffset(rangeWidth, rangeHeight));
             rangeRect = new Rect(anchorMinRotated, sizeRotatedOffset.ToVector3());
 
             // anim
