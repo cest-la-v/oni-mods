@@ -4,7 +4,7 @@
     <ProjectGuid>{E5E61711-9A97-4FCD-9B8E-669CB147938D}</ProjectGuid>
     <AssemblyName>HyperReservoir</AssemblyName>
     <AssemblyTitle>Hyper Reservoir</AssemblyTitle>
-    <Version>2.4.0.0</Version>
+    <Version>2.5.0.0</Version>
   </PropertyGroup>
   <PropertyGroup>
     <UsePLib>true</UsePLib>
