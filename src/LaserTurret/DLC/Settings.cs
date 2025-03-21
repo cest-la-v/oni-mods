@@ -3,7 +3,7 @@ using PeterHan.PLib.Options;
 
 namespace AsLimc.LaserTurret
 {
-    [ModInfo("AsLimc.LaserTurret.LocStrings.Settings.MOD_NAME", "https://github.com/v-limc/oni-mods", collapse: true)]
+    [ModInfo("AsLimc.LaserTurret.LocStrings.Settings.MOD_NAME", "https://github.com/cest-la-v/oni-mods", collapse: true)]
     [RestartRequired]
     [JsonObject(MemberSerialization.OptIn)]
     internal class Settings

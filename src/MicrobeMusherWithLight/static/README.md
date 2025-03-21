@@ -26,7 +26,7 @@ Suggest using along with [url=https://steamcommunity.com/sharedfiles/filedetails
 
 [h1]Useful Links[/h1]
 
-- [url=https://github.com/viva-la-v/oni-mods]My GitHub[/url]
+- [url=https://github.com/cest-la-v/oni-mods]My GitHub[/url]
 - [url=https://forums.kleientertainment.com/forums/forum/204-oxygen-not-included-mods-and-tools/][Oxygen Not Included] - Mods and Tools - Klei Entertainment Forums[/url]
 - [url=https://oni-db.com/]Oxygen Not Included Database by Fabrizio Filizola[/url]
 
@@ -57,6 +57,6 @@ Suggest using along with [url=https://steamcommunity.com/sharedfiles/filedetails
 
 [h1]相关链接[/h1]
 
-- [url=https://github.com/viva-la-v/oni-mods]My GitHub[/url]
+- [url=https://github.com/cest-la-v/oni-mods]My GitHub[/url]
 - [url=https://forums.kleientertainment.com/forums/forum/204-oxygen-not-included-mods-and-tools/][Oxygen Not Included] - Mods and Tools - Klei Entertainment Forums[/url]
 - [url=https://oni-db.com/]Oxygen Not Included Database by Fabrizio Filizola[/url]

@@ -4,7 +4,7 @@ using PeterHan.PLib.Options;
 // ReSharper disable InconsistentNaming
 
 namespace AsLimc.HyperReservoir {
-    [ModInfo("AsLimc.HyperReservoir.LocStrings.Settings.MOD_NAME", "https://github.com/viva-la-v/oni-mods", collapse: true)]
+    [ModInfo("AsLimc.HyperReservoir.LocStrings.Settings.MOD_NAME", "https://github.com/cest-la-v/oni-mods", collapse: true)]
     [JsonObject(MemberSerialization.OptIn)]
     [RestartRequired]
     public class Settings {

@@ -3,7 +3,7 @@ using PeterHan.PLib.Options;
 
 namespace AsLimc.SimplerPipPlantRule
 {
-    [ModInfo("AsLimc.HyperReservoir.LocStrings.Settings.MOD_NAME", "https://github.com/viva-la-v/oni-mods", collapse: true)]
+    [ModInfo("AsLimc.HyperReservoir.LocStrings.Settings.MOD_NAME", "https://github.com/cest-la-v/oni-mods", collapse: true)]
     [RestartRequired]
     [JsonObject(MemberSerialization.OptIn)]
     internal class Settings

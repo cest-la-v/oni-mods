@@ -22,7 +22,7 @@ Implement with new way, added a new setting to allow configuring light range tol
 
 [h1]Useful Links[/h1]
 
-- [url=https://github.com/viva-la-v/oni-mods]My GitHub[/url]
+- [url=https://github.com/cest-la-v/oni-mods]My GitHub[/url]
 - [url=https://forums.kleientertainment.com/forums/forum/204-oxygen-not-included-mods-and-tools/][Oxygen Not Included] - Mods and Tools - Klei Entertainment Forums[/url]
 - [url=https://oni-db.com/]Oxygen Not Included Database by Fabrizio Filizola[/url]
 - [url=https://github.com/peterhaneve/ONIMods/tree/master/PLib]peterhaneve/ONIMods/PLib[/url]
@@ -47,7 +47,7 @@ Implement with new way, added a new setting to allow configuring light range tol
 
 [h1]相关链接[/h1]
 
-- [url=https://github.com/viva-la-v/oni-mods]My GitHub[/url]
+- [url=https://github.com/cest-la-v/oni-mods]My GitHub[/url]
 - [url=https://forums.kleientertainment.com/forums/forum/204-oxygen-not-included-mods-and-tools/][Oxygen Not Included] - Mods and Tools - Klei Entertainment Forums[/url]
 - [url=https://oni-db.com/]Oxygen Not Included Database by Fabrizio Filizola[/url]
 - [url=https://github.com/peterhaneve/ONIMods/tree/master/PLib]peterhaneve/ONIMods/PLib[/url]
