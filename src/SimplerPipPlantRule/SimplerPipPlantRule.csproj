@@ -4,7 +4,7 @@
         <ProjectGuid>{3F6ABB82-733B-42CE-8F7F-FCFDBC7D4FD1}</ProjectGuid>
         <AssemblyName>SimplerPipPlantRule</AssemblyName>
         <AssemblyTitle>Simpler Pip Plant Rule</AssemblyTitle>
-        <Version>2.5.0.1</Version>
+        <Version>2.5.1.0</Version>
     </PropertyGroup>
     <PropertyGroup>
         <UsePLib>true</UsePLib>

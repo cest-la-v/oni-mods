@@ -4,7 +4,7 @@
     <ProjectGuid>{ABEDA729-09BF-47A2-89F9-0FB1E73FEAC4}</ProjectGuid>
     <AssemblyName>MicrobeMusherWithLight</AssemblyName>
     <AssemblyTitle>Simpler Pip Plant Rule</AssemblyTitle>
-    <Version>2.5.0.1</Version>
+    <Version>2.5.1.0</Version>
   </PropertyGroup>
   <PropertyGroup>
     <UsePLib>false</UsePLib>
