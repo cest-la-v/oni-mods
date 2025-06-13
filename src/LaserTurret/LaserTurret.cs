@@ -203,7 +203,8 @@ namespace AsLimc.LaserTurret {
                    // Trussed 捆绑
                    && !creature.HasTag(GameTags.Creatures.Bagged)
                    // Being Wrangled 被捕捉
-                   && !creature.HasTag(GameTags.Creatures.Stunned)
+                   && !creature.HasTag(GameTags.Creatures.StunnedForCapture)
+                   && !creature.HasTag(GameTags.Creatures.StunnedBeingEaten)
                    && IsReachable(creature.transform.position);
         }
 
