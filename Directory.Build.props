@@ -21,7 +21,7 @@ common vars https://msdn.microsoft.com/en-us/library/c02as0cs.aspx?f=255&MSPPErr
         <PlatformTarget>AnyCPU</PlatformTarget>
         <OutputType>Library</OutputType>
         <OutputPath>bin\$(Configuration)\</OutputPath>
-        <TargetFramework>net471</TargetFramework>
+        <TargetFramework>net480</TargetFramework>
         <FileAlignment>512</FileAlignment>
         <LangVersion>latest</LangVersion>
         <ErrorReport>prompt</ErrorReport>
